@@ -1,0 +1,23 @@
+.photos {
+    margin: 0 auto;
+    padding: 50px 0 ;
+    box-sizing: border-box;
+}
+
+/*@media screen and (max-width: 1277px) and (min-width: 1024px){
+    .photos {
+        padding: 0 48px 105px;
+    }
+  }
+
+  @media screen and (max-width: 1024px) and (min-width: 768px){
+    .photos {
+        padding: 0 24px 98px;
+    }
+  }
+
+  @media screen and (max-width: 767px){
+    .photos {
+        padding: 0 16px 72px;
+    }
+  }*/
