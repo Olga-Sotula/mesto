@@ -19,10 +19,17 @@
     .places {
         padding: 0 24px 0;
     }
-}
+}*/
 
 @media screen and (max-width: 767px){
-    .places {
-        padding: 0;
-    }
-}*/
+  .profile {
+    padding: 40px 0 0;
+    justify-items: center;
+    grid-template-columns: 237px calc(100% - 237px);
+    grid-template-areas:
+      "avatar avatar"
+      "title edit-button"
+      "subtitle subtitle"
+      "add-button  add-button";
+  }
+}

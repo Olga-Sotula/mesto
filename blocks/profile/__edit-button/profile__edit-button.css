@@ -7,3 +7,12 @@
   background-color: transparent;
   border: 1px solid white;
 }
+
+@media screen and (max-width: 767px){
+  .profile__edit-button {
+    margin: 35px 0 0;
+    width: 18px;
+    height: 18px;
+    justify-self: start;
+  }
+}

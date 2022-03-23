@@ -2,10 +2,18 @@
   grid-area: add-button;
   align-self: center;
   justify-self: end;
-  margin: 0 0 0 0;
+  margin: 0;
   padding: 0;
   width: 150px;
   height: 50px;
   background-color: transparent;
   border: 2px solid white;
+}
+
+@media screen and (max-width: 767px){
+  .profile__add-button {
+    width: 282px;
+    margin: 31px 0 0;
+    border: 1px solid white;
+  }
 }
