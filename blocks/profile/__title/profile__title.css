@@ -1,0 +1,9 @@
+.profile__title {
+  grid-area: title;
+  margin: 0;
+  padding: 22px 0 0 30px;
+  letter-spacing: 2px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+}

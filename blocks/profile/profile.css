@@ -1,0 +1,28 @@
+.profile {
+  display: grid;
+  margin: 0 auto;
+  padding: 34px 0 0;
+  box-sizing: border-box;
+  grid-template-columns: 120px 328px calc(100% - 120px - 328px - 150px) 150px;
+  grid-template-areas:
+    "avatar title edit-button add-button"
+    "avatar subtitle subtitle add-button";
+}
+
+/*@media screen and (max-width: 1277px) and (min-width: 1024px){
+    .places {
+        padding: 0 48px 0;
+    }
+  }
+
+@media screen and (max-width: 1024px) and (min-width: 768px){
+    .places {
+        padding: 0 24px 0;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .places {
+        padding: 0;
+    }
+}*/
