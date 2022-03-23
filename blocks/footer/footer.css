@@ -2,13 +2,13 @@
   min-height: 18px;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 92px 48px 24px;
+  padding: 18px 200px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-  
-@media screen and (max-width: 1024px) and (min-width: 768px){
+
+/*@media screen and (max-width: 1024px) and (min-width: 768px){
   .footer {
     padding: 88px 24px 24px;
   }
@@ -21,4 +21,4 @@
       flex-direction: column;
       align-items: flex-start;
   }
-}
+}*/

@@ -17,39 +17,6 @@
 @import url(../blocks/photos/__footer/photos__footer.css);
 @import url(../blocks/photos/__title/photos__title.css);
 @import url(../blocks/photos/__like/photos__like.css);
-
-/*@import url(../blocks/link/link.css);
-@import url(../blocks/link-trans/link-trans.css);
-
-
-
-@import url(../blocks/lead/lead.css);
-@import url(../blocks/lead/__title/lead__title.css);
-@import url(../blocks/lead/__subtitle/lead__subtitle.css);
-@import url(../blocks/figure/figure.css);
-@import url(../blocks/figure/__caption/figure__caption.css);
-@import url(../blocks/figure/__image/figure__image.css);
-@import url(../blocks/intro/intro.css);
-@import url(../blocks/intro/__item/intro__item.css);
-@import url(../blocks/intro/__list/intro__list.css);
-@import url(../blocks/intro/__text/intro__text.css);
-@import url(../blocks/intro/__title/intro__title.css);
-
-@import url(../blocks/photos/__img/photos__img.css);
-@import url(../blocks/places/places.css);
-@import url(../blocks/place/place.css);
-@import url(../blocks/place/__img/place__img.css);
-@import url(../blocks/place/__link/place__link.css);
-@import url(../blocks/place/__text/place__text.css);
-@import url(../blocks/place/__text/place__text.css);
-@import url(../blocks/place/__texts/place__texts.css);
-@import url(../blocks/place/__title/place__title.css);
-@import url(../blocks/place/__url/place__url.css);
-@import url(../blocks/place/__url-label/place__url-label.css);
-@import url(../blocks/cover/cover.css);
-@import url(../blocks/cover/__subtitle/cover__subtitle.css);
-@import url(../blocks/cover/__title/cover__title.css);
 @import url(../blocks/footer/footer.css);
-@import url(../blocks/footer/__author/footer__author.css);
-@import url(../blocks/footer/__link/footer__link.css);
-@import url(../blocks/footer/__nav/footer__nav.css);*/
+@import url(../blocks/footer/__logo/footer__logo.css);
+
