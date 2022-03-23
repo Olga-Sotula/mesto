@@ -9,27 +9,25 @@
     "avatar subtitle subtitle add-button";
 }
 
-/*@media screen and (max-width: 1277px) and (min-width: 1024px){
-    .places {
-        padding: 0 48px 0;
+  @media screen and (max-width: 600px) and (min-width: 424px){
+    .profile {
+      padding: 40px 0 0;
+      justify-items: center;
+      grid-template-columns: 120px 200px calc(100% - 120px - 200px);
+      grid-template-areas:
+        "avatar title edit-button"
+        "avatar subtitle ."
+        "add-button add-button add-button";
     }
   }
 
-@media screen and (max-width: 1024px) and (min-width: 768px){
-    .places {
-        padding: 0 24px 0;
-    }
-}*/
-
-@media screen and (max-width: 767px){
+@media screen and (max-width: 425px){
   .profile {
-    padding: 40px 0 0;
-    justify-items: center;
-    grid-template-columns: 237px calc(100% - 237px);
+    grid-template-columns: 90% 10%;
     grid-template-areas:
-      "avatar avatar"
+      "avatar ."
       "title edit-button"
-      "subtitle subtitle"
-      "add-button  add-button";
+      "subtitle ."
+      "add-button add-button";
   }
 }
