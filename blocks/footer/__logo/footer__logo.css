@@ -9,8 +9,9 @@
   color: #545454;
 }
 
-/*@media screen and (max-width: 767px){
-    .footer__author {
-        margin-top: 42px;
+@media screen and (max-width: 767px){
+    .footer__logo {
+      font-size: 14px;
+      line-height: 17px;
     }
-  }*/
+  }

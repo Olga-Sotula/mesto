@@ -14,10 +14,10 @@
     .photos {
         padding: 0 24px 98px;
     }
-  }
+  }*/
 
   @media screen and (max-width: 767px){
     .photos {
-        padding: 0 16px 72px;
+        padding: 32px 0;
     }
-  }*/
+  }
