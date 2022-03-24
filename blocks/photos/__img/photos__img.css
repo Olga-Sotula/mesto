@@ -1,5 +1,6 @@
 .photos__img {
-    width: 282px;
+    width: 100%;
+    min-width: 282px;
     height: 282px;
     object-fit: cover;
     border-radius: 5% 5% 0 0;
