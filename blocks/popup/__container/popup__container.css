@@ -1,0 +1,11 @@
+.popup__container {
+  display: grid;
+  margin: 0 auto;
+  width: 510px;
+  column-gap: 8px;
+  row-gap: 8px;
+  grid-template-columns: 32px calc(100% - 80px) 32px;
+  grid-template-areas:
+    ". . close"
+    ". form .";
+}
