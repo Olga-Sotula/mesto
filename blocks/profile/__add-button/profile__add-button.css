@@ -10,7 +10,7 @@
   border: 2px solid white;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 1023px){
   .profile__add-button {
     justify-self: center;
     width: 282px;

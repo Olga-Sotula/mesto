@@ -3,31 +3,31 @@
   margin: 0 auto;
   padding: 34px 0 0;
   box-sizing: border-box;
-  grid-template-columns: 120px 328px calc(100% - 120px - 328px - 150px) 150px;
+  justify-items: center;
+  column-gap: 12px;
+  grid-template-columns: 120px calc(100% - 120px - 150px) 150px;
   grid-template-areas:
-    "avatar title edit-button add-button"
-    "avatar subtitle subtitle add-button";
+    "avatar info add-button";
+
 }
 
-  @media screen and (max-width: 600px) and (min-width: 424px){
-    .profile {
-      padding: 40px 0 0;
-      justify-items: center;
-      grid-template-columns: 120px 200px calc(100% - 120px - 200px);
-      grid-template-areas:
-        "avatar title edit-button"
-        "avatar subtitle ."
-        "add-button add-button add-button";
-    }
-  }
-
-@media screen and (max-width: 425px){
+ @media screen and (max-width: 1023px) and (min-width: 768px){
   .profile {
-    grid-template-columns: 90% 10%;
+    padding: 40px 0 0;
+
+    grid-template-columns: 120px calc(100% - 120px);
     grid-template-areas:
-      "avatar ."
-      "title edit-button"
-      "subtitle ."
+      "avatar info"
       "add-button add-button";
+  }
+}
+
+@media screen and (max-width: 767px){
+  .profile {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "avatar"
+      "info"
+      "add-button";
   }
 }
