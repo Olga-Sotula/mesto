@@ -1,8 +1,0 @@
-.button_transp {
-  opacity: 1;
-  transition: opacity 1.5s ease-in;
-}
-
-.button_transp:hover {
-  opacity: .6;
-}
