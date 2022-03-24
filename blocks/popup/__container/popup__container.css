@@ -1,11 +1,24 @@
 .popup__container {
   display: grid;
   margin: 0 auto;
-  width: 510px;
+  padding: 31px 86px;
+  box-sizing: border-box;
+  width: 682px;
   column-gap: 8px;
   row-gap: 8px;
   grid-template-columns: 32px calc(100% - 80px) 32px;
   grid-template-areas:
     ". . close"
     ". form .";
+}
+
+@media screen and (max-width: 767px){
+  .popup__container {
+    padding: 0;
+    width: 282px;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "close"
+      "form";
+  }
 }
