@@ -1,7 +1,8 @@
 .popup__container {
+  position: relative;
   display: grid;
   margin: 0 auto;
-  padding: 31px 86px;
+  padding: 100px 86px;
   box-sizing: border-box;
   width: 682px;
   column-gap: 8px;
@@ -14,7 +15,7 @@
 
 @media screen and (max-width: 767px){
   .popup__container {
-    padding: 0;
+    padding: 50px 0;
     width: 282px;
     grid-template-columns: 100%;
     grid-template-areas:
