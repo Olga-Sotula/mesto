@@ -20,9 +20,9 @@
         <div class="profile__info">
           <p class="profile__title">Жак-Ив Кусто</p>
           <p class="profile__subtitle">Исследователь океана</p>
-          <button class="button profile__edit-button"></button>
+          <button type="button" class="button profile__edit-button"></button>
         </div>
-        <button class="button profile__add-button"></button>
+        <button type="button" class="button profile__add-button"></button>
       </section>
       <section class="photos" aria-label="Блок. Фотографии">
         <ul class="list photos__grid">
@@ -31,7 +31,7 @@
               <img class="photos__img" src="./images/photo-Karach.jpg" alt="Карачаевск"/>
               <div class="photos__footer">
                 <p class="photos__title">Карачаево-Черкессия</p>
-                <button class="button photos__like"></button>
+                <button type="button" class="button photos__like"></button>
               </div>
             </div>
           </li>
@@ -40,7 +40,7 @@
               <img class="photos__img" src="./images/photo-Elbrus.jpg" alt="Эльбрус"/>
               <div class="photos__footer">
                 <p class="photos__title">Гора Эльбрус</p>
-                <button class="button photos__like"></button>
+                <button type="button" class="button photos__like"></button>
               </div>
             </div>
           </li>
@@ -49,7 +49,7 @@
               <img class="photos__img" src="./images/photo-Dombay.jpg" alt="Домбай"/>
               <div class="photos__footer">
                 <p class="photos__title">Домбай</p>
-                <button class="button photos__like"></button>
+                <button type="button" class="button photos__like"></button>
               </div>
             </div>
           </li>
@@ -58,7 +58,7 @@
               <img class="photos__img" src="./images/photo-baikal.jpg" alt="Байкал"/>
               <div class="photos__footer">
                 <p class="photos__title">Байкал</p>
-                <button class="button photos__like"></button>
+                <button type="button" class="button photos__like"></button>
               </div>
             </div>
           </li>
@@ -67,7 +67,7 @@
               <img class="photos__img" src="./images/photo-kamchatka.jpg" alt="Камчатка"/>
               <div class="photos__footer">
                 <p class="photos__title">Камчатка</p>
-                <button class="button photos__like"></button>
+                <button type="button" class="button photos__like"></button>
               </div>
             </div>
           </li>
@@ -76,7 +76,7 @@
               <img class="photos__img" src="./images/photo-train.jpg" alt="Поезд"/>
               <div class="photos__footer">
                 <p class="photos__title">Вид из окна вагона</p>
-                <button class="button photos__like"></button>
+                <button type="button" class="button photos__like"></button>
               </div>
             </div>
           </li>
@@ -91,13 +91,13 @@
     </footer>
     <section class="popup">
       <div class="popup__container">
-        <button class="button popup__close"></button>
-        <div class="popup__form">
+        <button type="button" class="button popup__close"></button>
+        <form class="popup__form">
           <h1 class="popup__title">Редактировать профиль</h1>
           <input type="text" class="popup__input popup__input_type_name" value=""></input>
           <input type="text" class="popup__input popup__input_type_description" value=""></input>
           <button type="submit" class="button popup__submit">Сохранить</button>
-        </div>
+        </form>
       </div>
     </section>
     <script src="./scripts/index.js"></script>
