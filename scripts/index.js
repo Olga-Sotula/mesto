@@ -32,3 +32,13 @@ popupCloseButton.addEventListener('click', onClosePopupWindow);
 profileEditButton.addEventListener('click', onOpenPopupWindow);
 popupForm.addEventListener('submit',formSubmitHandler);
 
+const likeButtons = document.querySelectorAll('.photos__like');
+
+function onLikeToggle(evt) {
+  evt.target.classList.toggle('photos__like_liked');
+}
+
+for (let i = 0; i < likeButtons.length; i++){
+  likeButtons[i].addEventListener("click", onLikeToggle);
+}
+
