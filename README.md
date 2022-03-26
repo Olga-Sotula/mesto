@@ -14,5 +14,6 @@ HTML, CSS, Java Script.
 Реализовать функцию лайка фотографии.
 
 ## Ссылка на проект github
+https://olga-sotula.github.io/mesto/
 
 
