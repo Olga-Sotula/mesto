@@ -10,8 +10,8 @@
 }
 
 @media screen and (max-width: 767px){
-    .footer__logo {
-      font-size: 14px;
-      line-height: 17px;
-    }
+  .footer__logo {
+    font-size: 14px;
+    line-height: 17px;
   }
+}
