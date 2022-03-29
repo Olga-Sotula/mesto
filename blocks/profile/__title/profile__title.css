@@ -2,20 +2,14 @@
   grid-area: title;
   margin: 22px 0 0 18px;
   padding: 0;
-  max-width: 350px;
+  max-width: 450px;
   font-style: normal;
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 768px){
-  .profile__title{
-    max-width: 300px;
-  }
-}
-
-@media screen and (max-width: 767px) and (min-width: 425px){
+@media screen and (max-width: 1200px) and (min-width: 425px){
   .profile__title{
     max-width: 300px;
   }
