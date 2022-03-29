@@ -28,6 +28,7 @@ popupCloseButton.addEventListener('click', onClosePopupWindow);
 profileEditButton.addEventListener('click', onOpenPopupWindow);
 popupForm.addEventListener('submit',onSubmitPopupWindow);
 
+/*#TODO добавить отклики на кнопки лайков
 const likeButtons = document.querySelectorAll('.photos__like');
 
 function onLikeToggle(evt) {
@@ -37,4 +38,4 @@ function onLikeToggle(evt) {
 for (let i = 0; i < likeButtons.length; i++){
   likeButtons[i].addEventListener("click", onLikeToggle);
 }
-
+*/
