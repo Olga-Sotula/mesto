@@ -16,9 +16,9 @@
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <p class="profile__subtitle">Исследователь океана</p>
-          <button type="button" class="button profile__edit-button"></button>
+          <button type="button" class="button profile__edit-button" aria-label="Редактировать"></button>
         </div>
-        <button type="button" class="button profile__add-button"></button>
+        <button type="button" class="button profile__add-button" aria-label="Добавить"></button>
       </section>
       <section class="photos" aria-label="Блок. Фотографии">
         <ul class="list photos__grid">
@@ -27,7 +27,7 @@
               <img class="photos__img" src="./images/photo-Karach.jpg" alt="Карачаевск"/>
               <div class="photos__footer">
                 <p class="photos__title">Карачаево-Черкессия</p>
-                <button type="button" class="button photos__like"></button>
+                <button type="button" class="button photos__like" aria-label="Отметить"></button>
               </div>
             </div>
           </li>
@@ -36,7 +36,7 @@
               <img class="photos__img" src="./images/photo-Elbrus.jpg" alt="Эльбрус"/>
               <div class="photos__footer">
                 <p class="photos__title">Гора Эльбрус</p>
-                <button type="button" class="button photos__like"></button>
+                <button type="button" class="button photos__like" aria-label="Отметить"></button>
               </div>
             </div>
           </li>
@@ -45,7 +45,7 @@
               <img class="photos__img" src="./images/photo-Dombay.jpg" alt="Домбай"/>
               <div class="photos__footer">
                 <p class="photos__title">Домбай</p>
-                <button type="button" class="button photos__like"></button>
+                <button type="button" class="button photos__like" aria-label="Отметить"></button>
               </div>
             </div>
           </li>
@@ -54,7 +54,7 @@
               <img class="photos__img" src="./images/photo-baikal.jpg" alt="Байкал"/>
               <div class="photos__footer">
                 <p class="photos__title">Байкал</p>
-                <button type="button" class="button photos__like"></button>
+                <button type="button" class="button photos__like" aria-label="Отметить"></button>
               </div>
             </div>
           </li>
@@ -63,7 +63,7 @@
               <img class="photos__img" src="./images/photo-kamchatka.jpg" alt="Камчатка"/>
               <div class="photos__footer">
                 <p class="photos__title">Камчатка</p>
-                <button type="button" class="button photos__like"></button>
+                <button type="button" class="button photos__like" aria-label="Отметить"></button>
               </div>
             </div>
           </li>
@@ -72,7 +72,7 @@
               <img class="photos__img" src="./images/photo-train.jpg" alt="Поезд"/>
               <div class="photos__footer">
                 <p class="photos__title">Вид из окна вагона</p>
-                <button type="button" class="button photos__like"></button>
+                <button type="button" class="button photos__like" aria-label="Отметить"></button>
               </div>
             </div>
           </li>
@@ -84,12 +84,12 @@
     </footer>
     <section class="popup">
       <div class="popup__container">
-        <button type="button" class="button popup__close"></button>
+        <button type="button" class="button popup__close" aria-label="Закрыть"></button>
         <form class="popup__form">
           <h1 class="popup__title">Редактировать профиль</h1>
           <input type="text" class="popup__input popup__input_type_name" value=""/>
           <input type="text" class="popup__input popup__input_type_description" value=""/>
-          <button type="submit" class="button popup__submit">Сохранить</button>
+          <button type="submit" class="button popup__submit" aria-label="Сохранить">Сохранить</button>
         </form>
       </div>
     </section>
