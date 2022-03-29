@@ -2,7 +2,6 @@
   position: relative;
   display: grid;
   margin: 0 auto;
-  padding: 100px 86px;
   box-sizing: border-box;
   width: 682px;
   column-gap: 8px;
@@ -15,7 +14,6 @@
 
 @media screen and (max-width: 767px){
   .popup__container {
-    padding: 50px 0;
     width: 282px;
     grid-template-columns: 100%;
     grid-template-areas:
@@ -23,3 +21,11 @@
       "form";
   }
 }
+
+@media screen and (max-width: 424px){
+  .popup__container {
+    margin: 77px auto;
+    row-gap: 16px;
+  }
+}
+
