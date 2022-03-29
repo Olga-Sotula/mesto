@@ -7,30 +7,26 @@ const popupForm = document.querySelector('.popup__form');
 const popupInputName = popupForm.querySelector('.popup__input_type_name');
 const popupInputDescription = popupForm.querySelector('.popup__input_type_description');
 
-function togglePopupWindow() {
-  popupWindow.classList.toggle('popup_opened');
-}
-
 function onOpenPopupWindow(){
-  togglePopupWindow();
+  popupWindow.classList.add('popup_opened');
   popupInputName.value = profileTitle.textContent;
   popupInputDescription.value = profileSubtitle.textContent;
 }
 
 function onClosePopupWindow(){
-  togglePopupWindow();
+  popupWindow.classList.remove('popup_opened');
 }
 
-function formSubmitHandler(evt){
+function onSubmitPopupWindow(evt){
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileTitle.textContent = popupInputName.value;
   profileSubtitle.textContent = popupInputDescription.value;
-  togglePopupWindow();
+  popupWindow.classList.remove('popup_opened');
 }
 
 popupCloseButton.addEventListener('click', onClosePopupWindow);
 profileEditButton.addEventListener('click', onOpenPopupWindow);
-popupForm.addEventListener('submit',formSubmitHandler);
+popupForm.addEventListener('submit',onSubmitPopupWindow);
 
 const likeButtons = document.querySelectorAll('.photos__like');
 
