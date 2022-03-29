@@ -13,7 +13,6 @@
 
 @media screen and (max-width: 1023px) and (min-width: 768px){
   .profile {
-    padding: 40px 0 0;
     grid-template-columns: 120px calc(100% - 120px);
     grid-template-areas:
       "avatar info"
@@ -23,6 +22,7 @@
 
 @media screen and (max-width: 767px){
   .profile {
+    padding: 40px 0 0;
     grid-template-columns: 100%;
     grid-template-areas:
       "avatar"
