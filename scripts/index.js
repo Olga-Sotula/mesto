@@ -4,7 +4,7 @@ const popupWindow = document.querySelector('.popup');
 const popupCloseButton = document.querySelector('.popup__close');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupForm = document.querySelector('.popup__form');
-const popupInputName = popupForm.querySelector('.popup__input_type_name');
+const popupInputName = popupForm.querySelector('.popup__input_type_fullname');
 const popupInputDescription = popupForm.querySelector('.popup__input_type_description');
 
 function onOpenPopupWindow(){
