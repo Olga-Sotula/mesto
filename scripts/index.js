@@ -21,7 +21,7 @@ function onSubmitPopupWindow(evt){
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileTitle.textContent = popupInputName.value;
   profileSubtitle.textContent = popupInputDescription.value;
-  popupWindow.classList.remove('popup_opened');
+  onClosePopupWindow();
 }
 
 popupCloseButton.addEventListener('click', onClosePopupWindow);
