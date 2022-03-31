@@ -1,7 +1,6 @@
 .popup__container {
   position: relative;
   display: grid;
-  margin: 154px auto;
   box-sizing: border-box;
   width: 504px;
   column-gap: 8px;
