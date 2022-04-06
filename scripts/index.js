@@ -67,7 +67,7 @@ function onOpenPopupProfileWindow(){
 }
 
 function onSubmitPopupProfileWindow(evt){
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  evt.preventDefault();
   profileTitle.textContent = popupInputName.value;
   profileSubtitle.textContent = popupInputDescription.value;
   onClosePopupWindow();
@@ -78,6 +78,14 @@ function onOpenPopupCardsWindow(){
   popupCardsNameInput.value = '';
   popupCardsUrlInput.value = '';
   currentPopupWindow = popupCardsWindow;
+}
+
+function onSubmitPopupCardsWindow(evt){
+  evt.preventDefault();
+  const photoTitle = popupCardsNameInput.value;
+  const photoUrl = popupCardsUrlInput.value;
+  addPhoto(photoTitle, photoUrl);
+  onClosePopupWindow();
 }
 
 function onClosePopupWindow(){
@@ -91,6 +99,7 @@ popupCloseButtons.forEach((elem) => {elem.addEventListener('click', onClosePopup
 profileEditButton.addEventListener('click', onOpenPopupProfileWindow);
 popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
 cardAddButton.addEventListener('click', onOpenPopupCardsWindow);
+popupCardsForm.addEventListener('submit',onSubmitPopupCardsWindow);
 
 addInitialPhotos();
 /*#TODO добавить отклики на кнопки лайков
