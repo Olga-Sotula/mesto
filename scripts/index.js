@@ -50,6 +50,7 @@ function addPhoto(titleValue, urlValue) {
   photoElement.querySelector('.photo__img').src = urlValue;
   photoElement.querySelector('.photo__img').alt = titleValue;
   photoElement.querySelector('.photo__like').addEventListener("click", onLikeToggle);
+  photoElement.querySelector('.photo__rm').addEventListener("click", onPhotoDelete);
   photoContainer.prepend(photoElement);
 }
 
@@ -61,6 +62,10 @@ function addInitialPhotos(){
 
 function onLikeToggle(evt) {
   evt.target.classList.toggle('photo__like_active');
+}
+
+function onPhotoDelete(evt) {
+  evt.target.closest('.photo').remove();
 }
 
 function onOpenPopupProfileWindow(){
