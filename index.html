@@ -28,14 +28,26 @@
     <footer class="footer">
       <p class="footer__logo">&copy; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_type_profile">
       <div class="popup__container">
         <button type="button" class="button popup__close" aria-label="Закрыть"></button>
-        <form class="popup__form" name="editProfileForm">
+        <form class="popup__form popup__form_type_profile" name="editProfileForm">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input name="fullName" type="text" class="popup__input popup__input_type_fullname" value=""/>
           <input name="description" type="text" class="popup__input popup__input_type_description" value=""/>
-          <button type="submit" class="button popup__submit" aria-label="Сохранить">Сохранить</button>
+          <button type="submit" class="button popup__submit popup__submit_type_profile" aria-label="Сохранить">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_cards">
+      <div class="popup__container">
+        <button type="button" class="button popup__close" aria-label="Закрыть"></button>
+        <form class="popup__form" name="editProfileForm">
+          <h2 class="popup__title">Новое место</h2>
+          <input name="photoName" type="text" class="popup__input popup__input_type_photo-name" value="" placeholder="Название"/>
+          <input name="photoUrl" type="url" class="popup__input popup__input_type_photo-url" value="" placeholder="Ссылка на картинку"/>
+          <button type="submit" class="button popup__submit popup__submit_type_cards" aria-label="Сохранить">Сохранить</button>
         </form>
       </div>
     </div>
