@@ -46,10 +46,10 @@ let currentPopupWindow = null;
 function addPhoto(titleValue, urlValue) {
   const photoTemplate = document.querySelector('#photo-template').content;
   const photoElement = photoTemplate.querySelector('.photo').cloneNode(true);
-
   photoElement.querySelector('.photo__title').textContent = titleValue;
   photoElement.querySelector('.photo__img').src = urlValue;
   photoElement.querySelector('.photo__img').alt = titleValue;
+  photoElement.querySelector('.photo__like').addEventListener("click", onLikeToggle);
   photoContainer.prepend(photoElement);
 }
 
@@ -57,6 +57,10 @@ function addInitialPhotos(){
   for (let i = initialCards.length - 1; i >= 0; i--) {
     addPhoto(initialCards[i].name, initialCards[i].link);
   }
+}
+
+function onLikeToggle(evt) {
+  evt.target.classList.toggle('photo__like_active');
 }
 
 function onOpenPopupProfileWindow(){
@@ -95,21 +99,10 @@ function onClosePopupWindow(){
   }
 }
 
-popupCloseButtons.forEach((elem) => {elem.addEventListener('click', onClosePopupWindow)});
+popupCloseButtons.forEach(elem => {elem.addEventListener('click', onClosePopupWindow)});
 profileEditButton.addEventListener('click', onOpenPopupProfileWindow);
 popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
 cardAddButton.addEventListener('click', onOpenPopupCardsWindow);
 popupCardsForm.addEventListener('submit',onSubmitPopupCardsWindow);
 
 addInitialPhotos();
-/*#TODO добавить отклики на кнопки лайков
-const likeButtons = document.querySelectorAll('.photos__like');
-
-function onLikeToggle(evt) {
-  evt.target.classList.toggle('photos__like_liked');
-}
-
-for (let i = 0; i < likeButtons.length; i++){
-  likeButtons[i].addEventListener("click", onLikeToggle);
-}
-*/
