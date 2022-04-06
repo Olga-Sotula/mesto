@@ -28,8 +28,11 @@ const initialCards = [
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const popupProfileWindow = document.querySelector('.popup_type_profile');
-const popupCloseButton = document.querySelector('.popup__close');
+const popupCloseButtons = document.querySelectorAll('.popup__close');
 const profileEditButton = document.querySelector('.profile__edit-button');
+const cardAddButton = document.querySelector('.profile__add-button');
+const popupCardsWindow = document.querySelector('.popup_type_cards');
+const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const photoContainer = document.querySelector('.photos__grid');
 const popupProfileForm = document.querySelector('.popup__form_type_profile');
 const popupInputName = popupProfileForm.querySelector('.popup__input_type_fullname');
@@ -60,13 +63,6 @@ function onOpenPopupProfileWindow(){
   currentPopupWindow = popupProfileWindow;
 }
 
-function onClosePopupWindow(){
-  if (currentPopupWindow) {
-    currentPopupWindow.classList.remove('popup_opened');
-    popupWindow = null;
-  }
-}
-
 function onSubmitPopupProfileWindow(evt){
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileTitle.textContent = popupInputName.value;
@@ -74,9 +70,24 @@ function onSubmitPopupProfileWindow(evt){
   onClosePopupWindow();
 }
 
-popupCloseButton.addEventListener('click', onClosePopupWindow);
+function onOpenPopupCardsWindow(){
+  popupCardsWindow.classList.add('popup_opened');
+  //popupInputName.value = profileTitle.textContent;
+  //popupInputDescription.value = profileSubtitle.textContent;
+  currentPopupWindow = popupCardsWindow;
+}
+
+function onClosePopupWindow(){
+  if (currentPopupWindow) {
+    currentPopupWindow.classList.remove('popup_opened');
+    popupWindow = null;
+  }
+}
+
+popupCloseButtons.forEach((elem) => {elem.addEventListener('click', onClosePopupWindow)});
 profileEditButton.addEventListener('click', onOpenPopupProfileWindow);
 popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
+cardAddButton.addEventListener('click', onOpenPopupCardsWindow);
 
 addInitialPhotos();
 /*#TODO добавить отклики на кнопки лайков
