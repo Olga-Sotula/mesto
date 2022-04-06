@@ -9,6 +9,6 @@
   background-repeat: no-repeat;
 }
 
-.photos__like:hover {
+.photo__like:hover {
   opacity: .5;
 }
