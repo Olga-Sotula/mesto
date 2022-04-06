@@ -27,16 +27,19 @@ const initialCards = [
 
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const popupProfileWindow = document.querySelector('.popup_type_profile');
-const popupCloseButtons = document.querySelectorAll('.popup__close');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
-const popupCardsWindow = document.querySelector('.popup_type_cards');
-const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const photoContainer = document.querySelector('.photos__grid');
+
+const popupProfileWindow = document.querySelector('.popup_type_profile');
 const popupProfileForm = document.querySelector('.popup__form_type_profile');
 const popupInputName = popupProfileForm.querySelector('.popup__input_type_fullname');
 const popupInputDescription = popupProfileForm.querySelector('.popup__input_type_description');
+const popupCardsWindow = document.querySelector('.popup_type_cards');
+const popupCardsForm = document.querySelector('.popup__form_type_cards');
+const popupCardsNameInput = document.querySelector('.popup__input_type_photo-name');
+const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url');
+const popupCloseButtons = document.querySelectorAll('.popup__close');
 
 let currentPopupWindow = null;
 
@@ -72,8 +75,8 @@ function onSubmitPopupProfileWindow(evt){
 
 function onOpenPopupCardsWindow(){
   popupCardsWindow.classList.add('popup_opened');
-  //popupInputName.value = profileTitle.textContent;
-  //popupInputDescription.value = profileSubtitle.textContent;
+  popupCardsNameInput.value = '';
+  popupCardsUrlInput.value = '';
   currentPopupWindow = popupCardsWindow;
 }
 
