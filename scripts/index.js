@@ -40,7 +40,7 @@ const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const popupCardsNameInput = document.querySelector('.popup__input_type_photo-name');
 const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url');
 const popupCloseButtons = document.querySelectorAll('.popup__close');
-const popupPhotoPreviewWindow = document.querySelector('.popup_type_photo-preview');
+const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
 
 let currentPopupWindow = null;
 
