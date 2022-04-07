@@ -40,6 +40,7 @@ const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const popupCardsNameInput = document.querySelector('.popup__input_type_photo-name');
 const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url');
 const popupCloseButtons = document.querySelectorAll('.popup__close');
+const popupPhotoPreviewWindow = document.querySelector('.popup_type_photo-preview');
 
 let currentPopupWindow = null;
 
@@ -49,8 +50,9 @@ function addPhoto(titleValue, urlValue) {
   photoElement.querySelector('.photo__title').textContent = titleValue;
   photoElement.querySelector('.photo__img').src = urlValue;
   photoElement.querySelector('.photo__img').alt = titleValue;
-  photoElement.querySelector('.photo__like').addEventListener("click", onLikeToggle);
-  photoElement.querySelector('.photo__rm').addEventListener("click", onPhotoDelete);
+  photoElement.querySelector('.photo__like').addEventListener('click', onLikeToggle);
+  photoElement.querySelector('.photo__rm').addEventListener('click', onPhotoDelete);
+  photoElement.querySelector('.photo__img').addEventListener('click', onPhotoPreview);
   photoContainer.prepend(photoElement);
 }
 
@@ -66,6 +68,11 @@ function onLikeToggle(evt) {
 
 function onPhotoDelete(evt) {
   evt.target.closest('.photo').remove();
+}
+
+function onPhotoPreview(evt) {
+  popupPhotoPreviewWindow.classList.add('popup_opened');
+  currentPopupWindow = popupPhotoPreviewWindow;
 }
 
 function onOpenPopupProfileWindow(){
