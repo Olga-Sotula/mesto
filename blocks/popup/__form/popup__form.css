@@ -1,5 +1,5 @@
 .popup__form {
-  grid-area: form;
+  grid-area: content;
   padding: 35px 30px;
   width: 381px;
   background-color: white;

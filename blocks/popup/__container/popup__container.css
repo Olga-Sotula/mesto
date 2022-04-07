@@ -7,7 +7,7 @@
   grid-template-columns: 32px calc(100% - 80px) 32px;
   grid-template-areas:
     ". . close"
-    ". form .";
+    ". content .";
 }
 
 @media screen and (max-width: 767px){
@@ -15,7 +15,7 @@
     grid-template-columns: 100%;
     grid-template-areas:
       "close"
-      "form";
+      "content";
   }
 }
 
