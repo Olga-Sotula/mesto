@@ -71,8 +71,7 @@ function onPhotoDelete(evt) {
 }
 
 function onPhotoPreview(evt) {
-  popupPhotoPreviewWindow.classList.add('popup_opened');
-  currentPopupWindow = popupPhotoPreviewWindow;
+  onOpenPopupWindow(popupPhotoPreviewWindow);
   const target = evt.target;
   const card = target.parentElement;
   const url = target.src;
@@ -82,10 +81,9 @@ function onPhotoPreview(evt) {
 }
 
 function onOpenPopupProfileWindow(){
-  popupProfileWindow.classList.add('popup_opened');
+  onOpenPopupWindow(popupProfileWindow);
   popupInputName.value = profileTitle.textContent;
   popupInputDescription.value = profileSubtitle.textContent;
-  currentPopupWindow = popupProfileWindow;
 }
 
 function onSubmitPopupProfileWindow(evt){
@@ -96,10 +94,9 @@ function onSubmitPopupProfileWindow(evt){
 }
 
 function onOpenPopupCardsWindow(){
-  popupCardsWindow.classList.add('popup_opened');
+  onOpenPopupWindow(popupCardsWindow);
   popupCardsNameInput.value = '';
   popupCardsUrlInput.value = '';
-  currentPopupWindow = popupCardsWindow;
 }
 
 function onSubmitPopupCardsWindow(evt){
@@ -108,6 +105,11 @@ function onSubmitPopupCardsWindow(evt){
   const photoUrl = popupCardsUrlInput.value;
   addPhoto(photoTitle, photoUrl);
   onClosePopupWindow();
+}
+
+function onOpenPopupWindow(wnd){
+  wnd.classList.add('popup_opened');
+  currentPopupWindow = wnd;
 }
 
 function onClosePopupWindow(){
