@@ -1,0 +1,5 @@
+.popup__figure{
+  grid-area: figure;
+  margin: 0;
+  padding: 0;
+}

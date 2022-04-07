@@ -73,6 +73,12 @@ function onPhotoDelete(evt) {
 function onPhotoPreview(evt) {
   popupPhotoPreviewWindow.classList.add('popup_opened');
   currentPopupWindow = popupPhotoPreviewWindow;
+  const target = evt.target;
+  const card = target.parentElement;
+  const url = target.src;
+  const caption = card.querySelector('.photo__title').textContent;
+  popupPhotoPreviewWindow.querySelector('.popup__image').src = url;
+  popupPhotoPreviewWindow.querySelector('.popup__caption').textContent = caption;
 }
 
 function onOpenPopupProfileWindow(){
