@@ -20,12 +20,13 @@ let currentPopupWindow = null;
 
 function addPhoto(titleValue, urlValue) {
   const photoElement = photoTemplate.querySelector('.photo').cloneNode(true);
+  const photoImg = photoElement.querySelector('.photo__img');
   photoElement.querySelector('.photo__title').textContent = titleValue;
-  photoElement.querySelector('.photo__img').src = urlValue;
-  photoElement.querySelector('.photo__img').alt = titleValue;
+  photoImg.src = urlValue;
+  photoImg.alt = titleValue;
   photoElement.querySelector('.photo__like').addEventListener('click', onLikeToggle);
   photoElement.querySelector('.photo__rm').addEventListener('click', onPhotoDelete);
-  photoElement.querySelector('.photo__img').addEventListener('click', onOpenPhotoPreviewWindow);
+  photoImg.addEventListener('click', onOpenPhotoPreviewWindow);
   photoContainer.prepend(photoElement);
 }
 
