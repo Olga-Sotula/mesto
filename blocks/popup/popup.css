@@ -9,5 +9,5 @@
   justify-content: center;
   visibility: hidden;
   opacity: 0;
-  transition: visibility .7s, opacity 1.5s ease-in;
+  transition: visibility .5s, opacity 0.5s ease-in;
 }
