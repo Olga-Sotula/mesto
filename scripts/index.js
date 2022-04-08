@@ -70,6 +70,18 @@ function onPhotoDelete(evt) {
   evt.target.closest('.photo').remove();
 }
 
+function onOpenPopupWindow(wnd){
+  wnd.classList.add('popup_opened');
+  currentPopupWindow = wnd;
+}
+
+function onClosePopupWindow(){
+  if (currentPopupWindow) {
+    currentPopupWindow.classList.remove('popup_opened');
+    popupWindow = null;
+  }
+}
+
 function onOpenPhotoPreviewWindow(evt) {
   onOpenPopupWindow(popupPhotoPreviewWindow);
   popupPhotoPreviewWindow.querySelector('.popup__image').src = evt.target.src;
@@ -101,18 +113,6 @@ function onSubmitPopupCardsWindow(evt){
   const photoUrl = popupCardsUrlInput.value;
   addPhoto(photoTitle, photoUrl);
   onClosePopupWindow();
-}
-
-function onOpenPopupWindow(wnd){
-  wnd.classList.add('popup_opened');
-  currentPopupWindow = wnd;
-}
-
-function onClosePopupWindow(){
-  if (currentPopupWindow) {
-    currentPopupWindow.classList.remove('popup_opened');
-    popupWindow = null;
-  }
 }
 
 popupCloseButtons.forEach(elem => {elem.addEventListener('click', onClosePopupWindow)});
