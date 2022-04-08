@@ -14,11 +14,11 @@ const popupCardsNameInput = document.querySelector('.popup__input_type_photo-nam
 const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url');
 const popupCloseButtons = document.querySelectorAll('.popup__close');
 const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
+const photoTemplate = document.querySelector('#photo-template').content;
 
 let currentPopupWindow = null;
 
 function addPhoto(titleValue, urlValue) {
-  const photoTemplate = document.querySelector('#photo-template').content;
   const photoElement = photoTemplate.querySelector('.photo').cloneNode(true);
   photoElement.querySelector('.photo__title').textContent = titleValue;
   photoElement.querySelector('.photo__img').src = urlValue;
