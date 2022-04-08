@@ -16,8 +16,6 @@ const popupCloseButtons = document.querySelectorAll('.popup__close');
 const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
 const photoTemplate = document.querySelector('#photo-template').content;
 
-let currentPopupWindow = null;
-
 function getCard(card) {
   const photoElement = photoTemplate.querySelector('.photo').cloneNode(true);
   const photoImg = photoElement.querySelector('.photo__img');
@@ -45,14 +43,10 @@ function onPhotoDelete(evt) {
 
 function onOpenPopupWindow(popup){
   popup.classList.add('popup_opened');
-  currentPopupWindow = popup;
 }
 
-function onClosePopupWindow(){
-  if (currentPopupWindow) {
-    currentPopupWindow.classList.remove('popup_opened');
-    popupWindow = null;
-  }
+function onClosePopupWindow(popup){
+  popup.classList.remove('popup_opened');
 }
 
 function onOpenPhotoPreviewWindow(evt) {
@@ -72,7 +66,7 @@ function onSubmitPopupProfileWindow(evt){
   evt.preventDefault();
   profileTitle.textContent = popupInputName.value;
   profileSubtitle.textContent = popupInputDescription.value;
-  onClosePopupWindow();
+  onClosePopupWindow(popupProfileWindow);
 }
 
 function onOpenPopupCardsWindow(){
@@ -87,10 +81,15 @@ function onSubmitPopupCardsWindow(evt){
   const photoUrl = popupCardsUrlInput.value;
   const card = getCard({name: photoTitle, link: photoUrl});
   photoContainer.prepend(card);
-  onClosePopupWindow();
+  onClosePopupWindow(popupCardsWindow);
 }
 
-popupCloseButtons.forEach(elem => {elem.addEventListener('click', onClosePopupWindow)});
+function handleClosePopupWindow(evt){
+  const popup = evt.target.closest('.popup');
+  onClosePopupWindow(popup);
+}
+
+popupCloseButtons.forEach(elem => {elem.addEventListener('click', handleClosePopupWindow)});
 profileEditButton.addEventListener('click', onOpenPopupProfileWindow);
 popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
 cardAddButton.addEventListener('click', onOpenPopupCardsWindow);
