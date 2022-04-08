@@ -43,9 +43,9 @@ function onPhotoDelete(evt) {
   evt.target.closest('.photo').remove();
 }
 
-function onOpenPopupWindow(wnd){
-  wnd.classList.add('popup_opened');
-  currentPopupWindow = wnd;
+function onOpenPopupWindow(popup){
+  popup.classList.add('popup_opened');
+  currentPopupWindow = popup;
 }
 
 function onClosePopupWindow(){
