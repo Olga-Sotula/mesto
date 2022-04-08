@@ -85,6 +85,7 @@ function onClosePopupWindow(){
 function onOpenPhotoPreviewWindow(evt) {
   onOpenPopupWindow(popupPhotoPreviewWindow);
   popupPhotoPreviewWindow.querySelector('.popup__image').src = evt.target.src;
+  popupPhotoPreviewWindow.querySelector('.popup__image').alt = evt.target.parentElement.querySelector('.photo__title').textContent;
   popupPhotoPreviewWindow.querySelector('.popup__caption').textContent = evt.target.parentElement.querySelector('.photo__title').textContent;
 }
 
