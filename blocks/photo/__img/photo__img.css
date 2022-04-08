@@ -5,3 +5,7 @@
   object-fit: cover;
   border-radius: 5% 5% 0 0;
 }
+
+.photo__img:hover {
+  opacity: .6;
+}
