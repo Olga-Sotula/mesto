@@ -71,8 +71,7 @@ function onSubmitPopupProfileWindow(evt){
 
 function onOpenPopupCardsWindow(){
   onOpenPopupWindow(popupCardsWindow);
-  popupCardsNameInput.value = '';
-  popupCardsUrlInput.value = '';
+  popupCardsForm.reset();
 }
 
 function onSubmitPopupCardsWindow(evt){
