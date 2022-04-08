@@ -18,22 +18,21 @@ const photoTemplate = document.querySelector('#photo-template').content;
 
 let currentPopupWindow = null;
 
-function addPhoto(titleValue, urlValue) {
+function getCard(card) {
   const photoElement = photoTemplate.querySelector('.photo').cloneNode(true);
   const photoImg = photoElement.querySelector('.photo__img');
-  photoElement.querySelector('.photo__title').textContent = titleValue;
-  photoImg.src = urlValue;
-  photoImg.alt = titleValue;
+  photoElement.querySelector('.photo__title').textContent = card.name;
+  photoImg.src = card.link;
+  photoImg.alt = card.name;
   photoElement.querySelector('.photo__like').addEventListener('click', onLikeToggle);
   photoElement.querySelector('.photo__rm').addEventListener('click', onPhotoDelete);
   photoImg.addEventListener('click', onOpenPhotoPreviewWindow);
-  photoContainer.prepend(photoElement);
+  return photoElement;
 }
 
 function addInitialPhotos(){
-  for (let i = initialCards.length - 1; i >= 0; i--) {
-    addPhoto(initialCards[i].name, initialCards[i].link);
-  }
+  const cards = initialCards.map(getCard);
+  photoContainer.append(...cards);
 }
 
 function onLikeToggle(evt) {
@@ -86,7 +85,8 @@ function onSubmitPopupCardsWindow(evt){
   evt.preventDefault();
   const photoTitle = popupCardsNameInput.value;
   const photoUrl = popupCardsUrlInput.value;
-  addPhoto(photoTitle, photoUrl);
+  const card = getCard({name: photoTitle, link: photoUrl});
+  photoContainer.prepend(card);
   onClosePopupWindow();
 }
 
