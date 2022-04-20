@@ -1,30 +1,29 @@
-const showInputError = (formElement, inputElement, errorMessage,inputErrorClass) => {
-  //const errorElement = formElement.querySelector(inputErrorClass);
+const showInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
+  const errorElement = formElement.querySelector(`.popup__error_type_${inputElement.name}`);
   inputElement.classList.add(inputErrorClass);
-  //errorElement.textContent = errorMessage;
-  //errorElement.classList.add('form__input-error_active');
+  errorElement.classList.add(errorClass);
 };
 
-const hideInputError = (formElement, inputElement, inputErrorClass) => {
-  //const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
+  let name = `.popup__error_type_${inputElement.name}`;
+  const errorElement = formElement.querySelector(`.popup__error_type_${inputElement.name}`);
   inputElement.classList.remove(inputErrorClass);
-  //errorElement.classList.remove('form__input-error_active');
-  //errorElement.textContent = '';
+  errorElement.classList.remove(errorClass);
 };
 
-const checkInputValidity = (formElement, inputElement,inputErrorClass) => {
+const checkInputValidity = (formElement, inputElement,inputErrorClass, errorClass) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass);
+    showInputError(formElement, inputElement, inputErrorClass, errorClass);
   } else {
-    hideInputError(formElement, inputElement, inputErrorClass);
+    hideInputError(formElement, inputElement, inputErrorClass, errorClass);
   }
 };
 
-const setEventListeners = (formElement, inputSelector, inputErrorClass) => {
+const setEventListeners = (formElement, inputSelector, inputErrorClass, errorClass) => {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement, inputErrorClass);
+      checkInputValidity(formElement, inputElement, inputErrorClass, errorClass);
     });
   });
 };
@@ -36,6 +35,6 @@ const enableValidation = (elementSelectors) => {
       evt.preventDefault();
     });
 
-      setEventListeners(formElement, elementSelectors.inputSelector, elementSelectors.inputErrorClass);
+      setEventListeners(formElement, elementSelectors.inputSelector, elementSelectors.inputErrorClass, elementSelectors.errorClass);
   });
 };
