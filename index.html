@@ -38,8 +38,10 @@
           <h2 class="popup__title">Редактировать профиль</h2>
           <input name="fullName" type="text" class="popup__input popup__input_type_fullname" value=""
             required minlength="2" maxlength="40"/>
+          <span class="form__input-error fullname-input-error"></span>
           <input name="description" type="text" class="popup__input popup__input_type_description" value=""
             required minlength="2" maxlength="200"/>
+          <span class="form__input-error description-input-error"></span>
           <button type="submit" class="button popup__submit popup__submit_type_profile" aria-label="Сохранить">Сохранить</button>
         </form>
       </div>
@@ -52,8 +54,10 @@
           <h2 class="popup__title">Новое место</h2>
           <input name="photoName" type="text" class="popup__input popup__input_type_photo-name" value="" placeholder="Название"
             required minlength="2" maxlength="30"/>
+          <span class="form__input-error photoname-input-error"></span>
           <input name="photoUrl" type="url" class="popup__input popup__input_type_photo-url" value="" placeholder="Ссылка на картинку"
             required/>
+          <span class="form__input-error photourl-input-error"></span>
           <button type="submit" class="button popup__submit popup__submit_type_cards" aria-label="Создать">Создать</button>
         </form>
       </div>
