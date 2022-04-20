@@ -36,8 +36,10 @@
         <button type="button" class="button popup__close" aria-label="Закрыть"></button>
         <form class="popup__form popup__form_type_profile" name="editProfileForm">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input name="fullName" type="text" class="popup__input popup__input_type_fullname" value=""/>
-          <input name="description" type="text" class="popup__input popup__input_type_description" value=""/>
+          <input name="fullName" type="text" class="popup__input popup__input_type_fullname" value=""
+            required minlength="2" maxlength="40"/>
+          <input name="description" type="text" class="popup__input popup__input_type_description" value=""
+            required minlength="2" maxlength="200"/>
           <button type="submit" class="button popup__submit popup__submit_type_profile" aria-label="Сохранить">Сохранить</button>
         </form>
       </div>
@@ -48,8 +50,10 @@
         <button type="button" class="button popup__close" aria-label="Закрыть"></button>
         <form class="popup__form popup__form_type_cards" name="addCardForm">
           <h2 class="popup__title">Новое место</h2>
-          <input name="photoName" type="text" class="popup__input popup__input_type_photo-name" value="" placeholder="Название"/>
-          <input name="photoUrl" type="url" class="popup__input popup__input_type_photo-url" value="" placeholder="Ссылка на картинку"/>
+          <input name="photoName" type="text" class="popup__input popup__input_type_photo-name" value="" placeholder="Название"
+            required minlength="2" maxlength="30"/>
+          <input name="photoUrl" type="url" class="popup__input popup__input_type_photo-url" value="" placeholder="Ссылка на картинку"
+            required/>
           <button type="submit" class="button popup__submit popup__submit_type_cards" aria-label="Создать">Создать</button>
         </form>
       </div>
