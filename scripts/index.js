@@ -96,7 +96,7 @@ function handleOverlayClick(evt) {
   const popup = evt.currentTarget;
   const popupContainer = popup.querySelector('.popup__container');
   if ((evt.target === popup)||(evt.target === popupContainer)) {
-    onClosePopupWindow(popup);
+    //onClosePopupWindow(popup);
   }
 }
 
@@ -113,6 +113,7 @@ popupCloseButtons.forEach(elem => {elem.addEventListener('click', handleClosePop
 profileEditButton.addEventListener('click', onOpenPopupProfileWindow);
 popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
 cardAddButton.addEventListener('click', onOpenPopupCardsWindow);
+popupCardsForm.addEventListener('submit',onSubmitPopupCardsWindow);
 
 addInitialPhotos();
 
