@@ -4,7 +4,6 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 const photoContainer = document.querySelector('.photos__grid');
 
-const popups = document.querySelectorAll('.popup');
 const popupProfileWindow = document.querySelector('.popup_type_profile');
 const popupProfileForm = document.querySelector('.popup__form_type_profile');
 const popupInputName = popupProfileForm.querySelector('.popup__input_type_fullname');
@@ -44,10 +43,14 @@ function onPhotoDelete(evt) {
 
 function onOpenPopupWindow(popup){
   popup.classList.add('popup_opened');
+  popup.addEventListener('click', handleOverlayClick);
+  document.addEventListener('keydown', handleKeyPopup);
 }
 
 function onClosePopupWindow(popup){
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', handleOverlayClick);
+  document.removeEventListener('keydown', handleKeyPopup);
 }
 
 function onOpenPhotoPreviewWindow(evt) {
@@ -90,8 +93,10 @@ function handleClosePopupWindow(evt){
 }
 
 function handleOverlayClick(evt) {
-  if (evt.target === evt.currentTarget) {
-    onClosePopupWindow(evt.target);
+  const popup = evt.currentTarget;
+  const popupContainer = popup.querySelector('.popup__container');
+  if ((evt.target === popup)||(evt.target === popupContainer)) {
+    onClosePopupWindow(popup);
   }
 }
 
@@ -104,13 +109,10 @@ function handleKeyPopup(evt){
   }
 }
 
-document.addEventListener('keydown', handleKeyPopup);
-popups.forEach(elem => {elem.addEventListener('click', handleOverlayClick)});
 popupCloseButtons.forEach(elem => {elem.addEventListener('click', handleClosePopupWindow)});
 profileEditButton.addEventListener('click', onOpenPopupProfileWindow);
 popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
 cardAddButton.addEventListener('click', onOpenPopupCardsWindow);
-popupCardsForm.addEventListener('submit',onSubmitPopupCardsWindow);
 
 addInitialPhotos();
 
