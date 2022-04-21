@@ -96,7 +96,7 @@ function handleOverlayClick(evt) {
   const popup = evt.currentTarget;
   const popupContainer = popup.querySelector('.popup__container');
   if ((evt.target === popup)||(evt.target === popupContainer)) {
-    //onClosePopupWindow(popup);
+    onClosePopupWindow(popup);
   }
 }
 
