@@ -4,6 +4,7 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 const photoContainer = document.querySelector('.photos__grid');
 
+const popups = document.querySelectorAll('.popup');
 const popupProfileWindow = document.querySelector('.popup_type_profile');
 const popupProfileForm = document.querySelector('.popup__form_type_profile');
 const popupInputName = popupProfileForm.querySelector('.popup__input_type_fullname');
@@ -88,6 +89,13 @@ function handleClosePopupWindow(evt){
   onClosePopupWindow(popup);
 }
 
+function onOverlayClick(evt) {
+  if (evt.target === evt.currentTarget) {
+    onClosePopupWindow(evt.target);
+  }
+}
+
+popups.forEach(elem => {elem.addEventListener('click', onOverlayClick)});
 popupCloseButtons.forEach(elem => {elem.addEventListener('click', handleClosePopupWindow)});
 profileEditButton.addEventListener('click', onOpenPopupProfileWindow);
 popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
