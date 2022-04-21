@@ -89,13 +89,23 @@ function handleClosePopupWindow(evt){
   onClosePopupWindow(popup);
 }
 
-function onOverlayClick(evt) {
+function handleOverlayClick(evt) {
   if (evt.target === evt.currentTarget) {
     onClosePopupWindow(evt.target);
   }
 }
 
-popups.forEach(elem => {elem.addEventListener('click', onOverlayClick)});
+function handleKeyPopup(evt){
+  if (evt.key === 'Escape'){
+    const popup = document.querySelector('.popup_opened');
+    if (popup){
+      onClosePopupWindow(popup);
+    }
+  }
+}
+
+document.addEventListener('keydown', handleKeyPopup);
+popups.forEach(elem => {elem.addEventListener('click', handleOverlayClick)});
 popupCloseButtons.forEach(elem => {elem.addEventListener('click', handleClosePopupWindow)});
 profileEditButton.addEventListener('click', onOpenPopupProfileWindow);
 popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
