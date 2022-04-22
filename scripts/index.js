@@ -103,9 +103,7 @@ function handleOverlayClick(evt) {
 function handleKeyPopup(evt){
   if (evt.key === 'Escape'){
     const popup = document.querySelector('.popup_opened');
-    if (popup){
-      onClosePopupWindow(popup);
-    }
+    onClosePopupWindow(popup);
   }
 }
 
