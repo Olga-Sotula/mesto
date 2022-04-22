@@ -18,7 +18,7 @@
   .popup__close {
     width: 20px;
     height: 20px;
-    background-size: 22px;
+    background-size: 20px;
     justify-self: end;
   }
 }
