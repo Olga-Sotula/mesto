@@ -56,16 +56,16 @@ function onClosePopupWindow(popup){
 }
 
 function onOpenPhotoPreviewWindow(card) {
-  onOpenPopupWindow(popupPhotoPreviewWindow);
   popupPreviewImage.src = card.link;
   popupPreviewImage.alt = card.name;
   popupPreviewCaption.textContent = card.name;
+  onOpenPopupWindow(popupPhotoPreviewWindow);
 }
 
 function onOpenPopupProfileWindow(){
-  onOpenPopupWindow(popupProfileWindow);
   popupInputName.value = profileTitle.textContent;
   popupInputDescription.value = profileSubtitle.textContent;
+  onOpenPopupWindow(popupProfileWindow);
 }
 
 function onSubmitPopupProfileWindow(evt){
@@ -76,8 +76,8 @@ function onSubmitPopupProfileWindow(evt){
 }
 
 function onOpenPopupCardsWindow(){
-  onOpenPopupWindow(popupCardsWindow);
   popupCardsForm.reset();
+  onOpenPopupWindow(popupCardsWindow);
 }
 
 function onSubmitPopupCardsWindow(evt){
