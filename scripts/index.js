@@ -26,7 +26,7 @@ function getCard(card) {
   photoImg.alt = card.name;
   photoElement.querySelector('.photo__like').addEventListener('click', onLikeToggle);
   photoElement.querySelector('.photo__rm').addEventListener('click', onPhotoDelete);
-  photoImg.addEventListener('click', onOpenPhotoPreviewWindow);
+  photoImg.addEventListener('click', function(){onOpenPhotoPreviewWindow(card);});
   return photoElement;
 }
 
@@ -55,11 +55,11 @@ function onClosePopupWindow(popup){
   document.removeEventListener('keydown', handleKeyPopup);
 }
 
-function onOpenPhotoPreviewWindow(evt) {
+function onOpenPhotoPreviewWindow(card) {
   onOpenPopupWindow(popupPhotoPreviewWindow);
-  popupPreviewImage.src = evt.target.src;
-  popupPreviewImage.alt = evt.target.parentElement.querySelector('.photo__title').textContent;
-  popupPreviewCaption.textContent = evt.target.parentElement.querySelector('.photo__title').textContent;
+  popupPreviewImage.src = card.link;
+  popupPreviewImage.alt = card.name;
+  popupPreviewCaption.textContent = card.name;
 }
 
 function onOpenPopupProfileWindow(){
