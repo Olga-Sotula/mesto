@@ -14,6 +14,8 @@ const popupCardsNameInput = document.querySelector('.popup__input_type_photo-nam
 const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url');
 const popupCloseButtons = document.querySelectorAll('.popup__close');
 const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
+const popupPreviewImage = popupPhotoPreviewWindow.querySelector('.popup__image');
+const popupPreviewCaption =   popupPhotoPreviewWindow.querySelector('.popup__caption');
 const photoTemplate = document.querySelector('#photo-template').content;
 
 function getCard(card) {
@@ -55,9 +57,9 @@ function onClosePopupWindow(popup){
 
 function onOpenPhotoPreviewWindow(evt) {
   onOpenPopupWindow(popupPhotoPreviewWindow);
-  popupPhotoPreviewWindow.querySelector('.popup__image').src = evt.target.src;
-  popupPhotoPreviewWindow.querySelector('.popup__image').alt = evt.target.parentElement.querySelector('.photo__title').textContent;
-  popupPhotoPreviewWindow.querySelector('.popup__caption').textContent = evt.target.parentElement.querySelector('.photo__title').textContent;
+  popupPreviewImage.src = evt.target.src;
+  popupPreviewImage.alt = evt.target.parentElement.querySelector('.photo__title').textContent;
+  popupPreviewCaption.textContent = evt.target.parentElement.querySelector('.photo__title').textContent;
 }
 
 function onOpenPopupProfileWindow(){
