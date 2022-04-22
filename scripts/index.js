@@ -65,6 +65,8 @@ function onOpenPhotoPreviewWindow(card) {
 function onOpenPopupProfileWindow(){
   popupInputName.value = profileTitle.textContent;
   popupInputDescription.value = profileSubtitle.textContent;
+  hideInputError(popupProfileForm, popupInputName, 'popup__input_type_error', 'popup__error_visible');
+  hideInputError(popupProfileForm, popupInputDescription, 'popup__input_type_error', 'popup__error_visible');
   onOpenPopupWindow(popupProfileWindow);
 }
 
@@ -77,6 +79,8 @@ function onSubmitPopupProfileWindow(evt){
 
 function onOpenPopupCardsWindow(){
   popupCardsForm.reset();
+  hideInputError(popupCardsForm, popupCardsNameInput, 'popup__input_type_error', 'popup__error_visible');
+  hideInputError(popupCardsForm, popupCardsUrlInput, 'popup__input_type_error', 'popup__error_visible');
   onOpenPopupWindow(popupCardsWindow);
 }
 
