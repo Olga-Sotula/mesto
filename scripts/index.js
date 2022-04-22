@@ -87,15 +87,9 @@ function onSubmitPopupCardsWindow(evt){
   onClosePopupWindow(popupCardsWindow);
 }
 
-function handleClosePopupWindow(evt){
-  const popup = evt.target.closest('.popup');
-  onClosePopupWindow(popup);
-}
-
 function handleOverlayClick(evt) {
   const popup = evt.currentTarget;
-  const popupContainer = popup.querySelector('.popup__container');
-  if ((evt.target === popup)||(evt.target === popupContainer)) {
+  if ((evt.target === popup)||(evt.target.classList.contains('popup__close'))) {
     onClosePopupWindow(popup);
   }
 }
@@ -107,7 +101,6 @@ function handleKeyPopup(evt){
   }
 }
 
-popupCloseButtons.forEach(elem => {elem.addEventListener('click', handleClosePopupWindow)});
 profileEditButton.addEventListener('click', onOpenPopupProfileWindow);
 popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
 cardAddButton.addEventListener('click', onOpenPopupCardsWindow);
