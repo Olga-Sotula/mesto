@@ -8,6 +8,7 @@ const popupProfileWindow = document.querySelector('.popup_type_profile');
 const popupProfileForm = document.querySelector('.popup__form_type_profile');
 const popupInputName = popupProfileForm.querySelector('.popup__input_type_fullname');
 const popupInputDescription = popupProfileForm.querySelector('.popup__input_type_description');
+const popupProfileSubmit = popupProfileForm.querySelector('.popup__submit');
 const popupCardsWindow = document.querySelector('.popup_type_cards');
 const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const popupCardsNameInput = document.querySelector('.popup__input_type_photo-name');
@@ -67,6 +68,8 @@ function onOpenPopupProfileWindow(){
   popupInputDescription.value = profileSubtitle.textContent;
   hideInputError(popupProfileForm, popupInputName, 'popup__input_type_error', 'popup__error_visible');
   hideInputError(popupProfileForm, popupInputDescription, 'popup__input_type_error', 'popup__error_visible');
+  popupProfileSubmit.classList.remove('popup__submit_disabled');
+  popupProfileSubmit.disabled = false;
   onOpenPopupWindow(popupProfileWindow);
 }
 
