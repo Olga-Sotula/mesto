@@ -13,6 +13,7 @@ const popupCardsWindow = document.querySelector('.popup_type_cards');
 const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const popupCardsNameInput = document.querySelector('.popup__input_type_photo-name');
 const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url');
+const popupCardsSubmit = popupCardsForm.querySelector('.popup__submit');
 const popupCloseButtons = document.querySelectorAll('.popup__close');
 const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
 const popupPreviewImage = popupPhotoPreviewWindow.querySelector('.popup__image');
@@ -63,13 +64,25 @@ function onOpenPhotoPreviewWindow(card) {
   onOpenPopupWindow(popupPhotoPreviewWindow);
 }
 
+function resetFormErrors(form){
+  const errorClasses = ['popup__input_type_error', 'popup__error_visible'];
+  errorClasses.forEach(errorClass => {
+    Array.from(form.querySelectorAll(`.${errorClass}`)).forEach(elem => {
+      elem.classList.remove(errorClass);
+    });
+  });
+}
+
+function setSubmitDisabled(button, isDisabled){
+  button.classList.toggle('popup__submit_disabled', isDisabled);
+  button.disabled = isDisabled;
+}
+
 function onOpenPopupProfileWindow(){
   popupInputName.value = profileTitle.textContent;
   popupInputDescription.value = profileSubtitle.textContent;
-  hideInputError(popupProfileForm, popupInputName, 'popup__input_type_error', 'popup__error_visible');
-  hideInputError(popupProfileForm, popupInputDescription, 'popup__input_type_error', 'popup__error_visible');
-  popupProfileSubmit.classList.remove('popup__submit_disabled');
-  popupProfileSubmit.disabled = false;
+  resetFormErrors(popupProfileForm)
+  setSubmitDisabled(popupProfileSubmit, false);
   onOpenPopupWindow(popupProfileWindow);
 }
 
@@ -82,8 +95,8 @@ function onSubmitPopupProfileWindow(evt){
 
 function onOpenPopupCardsWindow(){
   popupCardsForm.reset();
-  hideInputError(popupCardsForm, popupCardsNameInput, 'popup__input_type_error', 'popup__error_visible');
-  hideInputError(popupCardsForm, popupCardsUrlInput, 'popup__input_type_error', 'popup__error_visible');
+  resetFormErrors(popupCardsForm)
+  setSubmitDisabled(popupCardsSubmit, true);
   onOpenPopupWindow(popupCardsWindow);
 }
 
