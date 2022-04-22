@@ -1,18 +1,20 @@
-const showInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
+const showInputError = (formElement, inputElement, inputErrorClass, errorClass, errorMessage) => {
   const errorElement = formElement.querySelector(`.popup__error_type_${inputElement.name}`);
   inputElement.classList.add(inputErrorClass);
   errorElement.classList.add(errorClass);
+  errorElement.textContent = errorMessage;
 };
 
 const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
   const errorElement = formElement.querySelector(`.popup__error_type_${inputElement.name}`);
   inputElement.classList.remove(inputErrorClass);
   errorElement.classList.remove(errorClass);
+  errorElement.textContent = '';
 };
 
 const checkInputValidity = (formElement, inputElement,inputErrorClass, errorClass) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputErrorClass, errorClass);
+    showInputError(formElement, inputElement, inputErrorClass, errorClass, inputElement.validationMessage);
   } else {
     hideInputError(formElement, inputElement, inputErrorClass, errorClass);
   }
