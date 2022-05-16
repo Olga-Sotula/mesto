@@ -56,6 +56,15 @@ class Card {
     popupElement.classList.remove('popup_is-opened');
   }*/
 
+  _handleLikeToggle(evt) {
+    evt.target.classList.toggle('photo__like_active');
+  }
+
+  _handlePhotoDelete(evt) {
+    evt.target.closest('.photo').remove();
+  }
+
+
   _setEventListeners() {
     /*this._element.addEventListener('click', () => {
       this._handleOpenPopup();
@@ -66,8 +75,8 @@ class Card {
     });*/
 
 
-    this._elementLike.addEventListener('click', onLikeToggle);
-    this._elementRemove.addEventListener('click', onPhotoDelete);
+    this._elementLike.addEventListener('click', this._handleLikeToggle);
+    this._elementRemove.addEventListener('click', this._handlePhotoDelete);
     this._elementImage.addEventListener('click', function(){onOpenPhotoPreviewWindow(this._element);});
 
 
@@ -99,13 +108,6 @@ function addInitialPhotos(){
   });
 }
 
-function onLikeToggle(evt) {
-  evt.target.classList.toggle('photo__like_active');
-}
-
-function onPhotoDelete(evt) {
-  evt.target.closest('.photo').remove();
-}
 
 function onOpenPopupWindow(popup){
   popup.classList.add('popup_opened');
