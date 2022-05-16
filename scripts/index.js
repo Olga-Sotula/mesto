@@ -29,6 +29,11 @@ class Card {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._element = null;
+    this._elementImage = null;
+    this._elementTitle = null;
+    this._elementLike = null;
+    this._elementRemove = null;
   }
 
   _getTemplate() {
@@ -49,26 +54,37 @@ class Card {
   _handleClosePopup() {
     popupImage.src = '';
     popupElement.classList.remove('popup_is-opened');
-  }
+  }*/
 
   _setEventListeners() {
-    this._element.addEventListener('click', () => {
+    /*this._element.addEventListener('click', () => {
       this._handleOpenPopup();
-    });
+    });*/
 
-    popupCloseButton.addEventListener('click', () => {
+    /*popupCloseButton.addEventListener('click', () => {
       this._handleClosePopup();
-    });
-  }*/
+    });*/
+
+
+    this._elementLike.addEventListener('click', onLikeToggle);
+    this._elementRemove.addEventListener('click', onPhotoDelete);
+    this._elementImage.addEventListener('click', function(){onOpenPhotoPreviewWindow(this._element);});
+
+
+  }
 
   generateCard() {
     this._element = this._getTemplate();
-    //super._setEventListeners();
+    this._elementTitle = this._element.querySelector('.photo__title');
+    this._elementLike = this._element.querySelector('.photo__like');
+    this._elementRemove = this._element.querySelector('.photo__rm');
+    this._elementImage = this._element.querySelector('.photo__img');
 
-    const photoImg = this._element.querySelector('.photo__img');
-    this._element.querySelector('.photo__title').textContent = this._name;
-    photoImg.src = this._link;
-    photoImg.alt = this._name;
+    this._elementTitle.textContent = this._name;
+    this._elementImage.src = this._link;
+    this._elementImage.alt = this._name;
+
+    this._setEventListeners();
 
     return this._element;
   }
