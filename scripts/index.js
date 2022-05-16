@@ -146,8 +146,9 @@ function onSubmitPopupCardsWindow(evt){
   evt.preventDefault();
   const photoTitle = popupCardsNameInput.value;
   const photoUrl = popupCardsUrlInput.value;
-  //const card = getCard({name: photoTitle, link: photoUrl});
-  photoContainer.prepend(card);
+  const card = new Card({name: photoTitle, link: photoUrl}, '#photo-template');
+  const cardElement = card.generateCard();
+  photoContainer.prepend(cardElement);
   onClosePopupWindow(popupCardsWindow);
 }
 
