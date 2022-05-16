@@ -1,5 +1,6 @@
 import {initialCards} from './cards.js';
 import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
 
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
@@ -107,13 +108,33 @@ popupCardsForm.addEventListener('submit',onSubmitPopupCardsWindow);
 
 addInitialPhotos();
 
-enableValidation({
+
+
+export const validatorConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
   inactiveButtonClass: 'popup__submit_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
-});
+};
+
+const addValidation = () => {
+  const formList = Array.from(document.querySelectorAll(validatorConfig.formSelector));
+  formList.forEach((form) => {
+    const validator = new FormValidator(validatorConfig, form)
+    console.log(validator);
+  });
+  /*formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+
+      setEventListeners(formElement, elementSelectors.inputSelector, elementSelectors.inputErrorClass, elementSelectors.errorClass, elementSelectors.submitButtonSelector, elementSelectors.inactiveButtonClass);
+  });*/
+};
+
+
+addValidation();
 
 export {onOpenPopupWindow};
