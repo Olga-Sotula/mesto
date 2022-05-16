@@ -1,4 +1,6 @@
+import {initialCards} from './cards.js';
 //import {Card} from '../scripts/Card';
+
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const profileEditButton = document.querySelector('.profile__edit-button');
