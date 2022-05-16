@@ -1,3 +1,10 @@
+export class FormValidator {
+  constructor (config, formElement){
+
+  }
+}
+
+
 const showInputError = (formElement, inputElement, inputErrorClass, errorClass, errorMessage) => {
   const errorElement = formElement.querySelector(`.popup__error_type_${inputElement.name}`);
   inputElement.classList.add(inputErrorClass);
