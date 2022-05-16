@@ -46,40 +46,25 @@ class Card {
     return cardElement;
   }
 
-  /*_handleOpenPopup() {
-    popupImage.src = this._image;
-    popupElement.classList.add('popup_is-opened');
+  _handleOpenPhotoPreviewWindow() {
+    popupPreviewImage.src = this._link;
+    popupPreviewImage.alt = this._name;
+    popupPreviewCaption.textContent = this._name;
+    onOpenPopupWindow(popupPhotoPreviewWindow);
   }
 
-  _handleClosePopup() {
-    popupImage.src = '';
-    popupElement.classList.remove('popup_is-opened');
-  }*/
-
-  _handleLikeToggle(evt) {
-    evt.target.classList.toggle('photo__like_active');
+  _handleLikeToggle() {
+    this._elementLike.classList.toggle('photo__like_active');
   }
 
-  _handlePhotoDelete(evt) {
-    evt.target.closest('.photo').remove();
+  _handlePhotoDelete() {
+    this._element.remove();
   }
-
 
   _setEventListeners() {
-    /*this._element.addEventListener('click', () => {
-      this._handleOpenPopup();
-    });*/
-
-    /*popupCloseButton.addEventListener('click', () => {
-      this._handleClosePopup();
-    });*/
-
-
-    this._elementLike.addEventListener('click', this._handleLikeToggle);
-    this._elementRemove.addEventListener('click', this._handlePhotoDelete);
-    this._elementImage.addEventListener('click', function(){onOpenPhotoPreviewWindow(this._element);});
-
-
+    this._elementLike.addEventListener('click', () => {this._handleLikeToggle()});
+    this._elementRemove.addEventListener('click', () => {this._handlePhotoDelete()});
+    this._elementImage.addEventListener('click', () => {this._handleOpenPhotoPreviewWindow()});
   }
 
   generateCard() {
@@ -119,13 +104,6 @@ function onClosePopupWindow(popup){
   popup.classList.remove('popup_opened');
   popup.removeEventListener('click', handleOverlayClick);
   document.removeEventListener('keydown', handleKeyPopup);
-}
-
-function onOpenPhotoPreviewWindow(card) {
-  popupPreviewImage.src = card.link;
-  popupPreviewImage.alt = card.name;
-  popupPreviewCaption.textContent = card.name;
-  onOpenPopupWindow(popupPhotoPreviewWindow);
 }
 
 function resetFormErrors(form){
