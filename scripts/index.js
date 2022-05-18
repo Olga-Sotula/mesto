@@ -122,8 +122,8 @@ export const validatorConfig = {
 const addValidation = () => {
   const formList = Array.from(document.querySelectorAll(validatorConfig.formSelector));
   formList.forEach((form) => {
-    const validator = new FormValidator(validatorConfig, form)
-    console.log(validator);
+    const validator = new FormValidator(validatorConfig, form);
+    validator.enableValidation();
   });
   /*formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
