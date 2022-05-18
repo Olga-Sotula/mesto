@@ -28,15 +28,37 @@ export class FormValidator {
     }
   }
 
-  _setEventListeners() {
-      this._toggleButtonState();
+  _showInputError (input, errorMessage) {
+    const errorElement = this._formElement.querySelector(`.popup__error_type_${input.name}`);
+    input.classList.add(this._inputErrorClass);
+    errorElement.classList.add(this._errorClass);
+    errorElement.textContent = errorMessage;
+  };
 
-      /*inputList.forEach((inputElement) => {
-        inputElement.addEventListener('input', function () {
-          checkInputValidity(formElement, inputElement, inputErrorClass, errorClass);
-          toggleButtonState(inputList, buttonElement, inactiveButtonClass);
-        });
-      });*/
+  _hideInputError(input) {
+    const errorElement = this._formElement.querySelector(`.popup__error_type_${input.name}`);
+    input.classList.remove(this._inputErrorClass);
+    errorElement.classList.remove(this._errorClass);
+    errorElement.textContent = '';
+  };
+
+  _checkInputValidity(input) {
+    if (!input.validity.valid) {
+      this._showInputError(input, input.validationMessage);
+    } else {
+      this._hideInputError(input);
+    }
+  };
+
+  _setEventListeners() {
+    this._toggleButtonState();
+
+    this._inputList.forEach((inputElement) => {
+      inputElement.addEventListener('input', () => {
+        this._checkInputValidity(inputElement);
+        this._toggleButtonState();
+      });
+    })
   }
 
   enableValidation () {
@@ -53,7 +75,7 @@ export class FormValidator {
 }
 
 
-const showInputError = (formElement, inputElement, inputErrorClass, errorClass, errorMessage) => {
+/*const showInputError = (formElement, inputElement, inputErrorClass, errorClass, errorMessage) => {
   const errorElement = formElement.querySelector(`.popup__error_type_${inputElement.name}`);
   inputElement.classList.add(inputErrorClass);
   errorElement.classList.add(errorClass);
@@ -73,7 +95,7 @@ const checkInputValidity = (formElement, inputElement,inputErrorClass, errorClas
   } else {
     hideInputError(formElement, inputElement, inputErrorClass, errorClass);
   }
-};
+};*/
 
 /*const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
