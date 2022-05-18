@@ -51,6 +51,10 @@ export class FormValidator {
   };
 
   _setEventListeners() {
+    this._formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+
     this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
@@ -63,14 +67,6 @@ export class FormValidator {
 
   enableValidation () {
     this._setEventListeners();
-    /*const formList = Array.from(document.querySelectorAll(elementSelectors.formSelector));
-    formList.forEach((formElement) => {
-      formElement.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-      });
-
-        setEventListeners(formElement, elementSelectors.inputSelector, elementSelectors.inputErrorClass, elementSelectors.errorClass, elementSelectors.submitButtonSelector, elementSelectors.inactiveButtonClass);
-    });*/
   }
 }
 
