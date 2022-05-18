@@ -1,6 +1,7 @@
-import {initialCards} from './cards.js';
-import {Card} from './Card.js';
-import {FormValidator} from './FormValidator.js';
+import { onOpenPopupWindow, onClosePopupWindow } from "./utils.js";
+import { initialCards } from './cards.js';
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
@@ -26,19 +27,6 @@ function addInitialPhotos(){
 
     photoContainer.append(cardElement);
   });
-}
-
-
-function onOpenPopupWindow(popup){
-  popup.classList.add('popup_opened');
-  popup.addEventListener('click', handleOverlayClick);
-  document.addEventListener('keydown', handleKeyPopup);
-}
-
-function onClosePopupWindow(popup){
-  popup.classList.remove('popup_opened');
-  popup.removeEventListener('click', handleOverlayClick);
-  document.removeEventListener('keydown', handleKeyPopup);
 }
 
 function resetFormErrors(form){
@@ -87,20 +75,6 @@ function onSubmitPopupCardsWindow(evt){
   onClosePopupWindow(popupCardsWindow);
 }
 
-function handleOverlayClick(evt) {
-  const popup = evt.currentTarget;
-  if ((evt.target === popup)||(evt.target.classList.contains('popup__close'))) {
-    onClosePopupWindow(popup);
-  }
-}
-
-function handleKeyPopup(evt){
-  if (evt.key === 'Escape'){
-    const popup = document.querySelector('.popup_opened');
-    onClosePopupWindow(popup);
-  }
-}
-
 profileEditButton.addEventListener('click', onOpenPopupProfileWindow);
 popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
 cardAddButton.addEventListener('click', onOpenPopupCardsWindow);
@@ -137,4 +111,3 @@ const addValidation = () => {
 
 addValidation();
 
-export {onOpenPopupWindow};

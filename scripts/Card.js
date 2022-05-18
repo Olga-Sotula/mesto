@@ -1,4 +1,4 @@
-import { onOpenPopupWindow } from "./index.js";
+import { onOpenPopupWindow } from "./utils.js";
 
 const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
 const popupPreviewImage = popupPhotoPreviewWindow.querySelector('.popup__image');
