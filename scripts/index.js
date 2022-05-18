@@ -82,9 +82,7 @@ popupCardsForm.addEventListener('submit',onSubmitPopupCardsWindow);
 
 addInitialPhotos();
 
-
-
-export const validatorConfig = {
+const validatorConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
@@ -94,20 +92,12 @@ export const validatorConfig = {
 };
 
 const addValidation = () => {
-  const formList = Array.from(document.querySelectorAll(validatorConfig.formSelector));
-  formList.forEach((form) => {
+  const forms = Array.from(document.querySelectorAll(validatorConfig.formSelector));
+  forms.forEach((form) => {
     const validator = new FormValidator(validatorConfig, form);
     validator.enableValidation();
   });
-  /*formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-
-      setEventListeners(formElement, elementSelectors.inputSelector, elementSelectors.inputErrorClass, elementSelectors.errorClass, elementSelectors.submitButtonSelector, elementSelectors.inactiveButtonClass);
-  });*/
 };
-
 
 addValidation();
 
