@@ -39,15 +39,6 @@ function handleCardClick(name, link){
   onOpenPopupWindow(popupPhotoPreviewWindow);
 }
 
-function resetFormErrors(form){
-  const errorClasses = ['popup__input_type_error', 'popup__error_visible'];
-  errorClasses.forEach(errorClass => {
-    Array.from(form.querySelectorAll(`.${errorClass}`)).forEach(elem => {
-      elem.classList.remove(errorClass);
-    });
-  });
-}
-
 function setSubmitDisabled(button, isDisabled){
   button.classList.toggle('popup__submit_disabled', isDisabled);
   button.disabled = isDisabled;
@@ -56,7 +47,7 @@ function setSubmitDisabled(button, isDisabled){
 function onOpenPopupProfileWindow(){
   popupInputName.value = profileTitle.textContent;
   popupInputDescription.value = profileSubtitle.textContent;
-  resetFormErrors(popupProfileForm)
+  profileValidator.resetValidation();
   setSubmitDisabled(popupProfileSubmit, false);
   onOpenPopupWindow(popupProfileWindow);
 }
@@ -70,7 +61,7 @@ function onSubmitPopupProfileWindow(evt){
 
 function onOpenPopupCardsWindow(){
   popupCardsForm.reset();
-  resetFormErrors(popupCardsForm)
+  cardValidator.resetValidation();
   setSubmitDisabled(popupCardsSubmit, true);
   onOpenPopupWindow(popupCardsWindow);
 }
@@ -101,13 +92,7 @@ const validatorConfig = {
   errorClass: 'popup__error_visible'
 };
 
-const addValidation = () => {
-  const forms = Array.from(document.querySelectorAll(validatorConfig.formSelector));
-  forms.forEach((form) => {
-    const validator = new FormValidator(validatorConfig, form);
-    validator.enableValidation();
-  });
-};
-
-addValidation();
-
+const profileValidator = new FormValidator(validatorConfig, popupProfileForm);
+profileValidator.enableValidation();
+const cardValidator = new FormValidator(validatorConfig, popupCardsForm);
+cardValidator.enableValidation();
