@@ -1,4 +1,4 @@
-import { openPopupWindow, onClosePopupWindow } from "./utils.js";
+import { openPopupWindow, closePopupWindow } from "./utils.js";
 import { initialCards } from './cards.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
@@ -49,7 +49,7 @@ function handleProfileFormSubmit(evt){
   evt.preventDefault();
   profileTitle.textContent = popupInputName.value;
   profileSubtitle.textContent = popupInputDescription.value;
-  onClosePopupWindow(popupProfileWindow);
+  closePopupWindow(popupProfileWindow);
 }
 
 function openPopupCardsWindow(){
@@ -64,7 +64,7 @@ function handleCardFormSubmit(evt){
   const photoUrl = popupCardsUrlInput.value;
   const cardElement = createCard({name: photoTitle, link: photoUrl});
   photoContainer.prepend(cardElement);
-  onClosePopupWindow(popupCardsWindow);
+  closePopupWindow(popupCardsWindow);
 }
 
 profileEditButton.addEventListener('click', openPopupProfileWindow);

@@ -1,14 +1,14 @@
 function handleOverlayClick(evt) {
   const popup = evt.currentTarget;
   if ((evt.target === popup)||(evt.target.classList.contains('popup__close'))) {
-    onClosePopupWindow(popup);
+    closePopupWindow(popup);
   }
 }
 
 function handleKeyPopup(evt){
   if (evt.key === 'Escape'){
     const popup = document.querySelector('.popup_opened');
-    onClosePopupWindow(popup);
+    closePopupWindow(popup);
   }
 }
 
@@ -18,11 +18,11 @@ function openPopupWindow(popup){
   document.addEventListener('keydown', handleKeyPopup);
 }
 
-function onClosePopupWindow(popup){
+function closePopupWindow(popup){
   popup.classList.remove('popup_opened');
   popup.removeEventListener('click', handleOverlayClick);
   document.removeEventListener('keydown', handleKeyPopup);
 }
 
 
-export {openPopupWindow, onClosePopupWindow};
+export {openPopupWindow, closePopupWindow};
