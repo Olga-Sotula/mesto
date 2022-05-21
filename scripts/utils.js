@@ -12,7 +12,7 @@ function handleKeyPopup(evt){
   }
 }
 
-function onOpenPopupWindow(popup){
+function openPopupWindow(popup){
   popup.classList.add('popup_opened');
   popup.addEventListener('click', handleOverlayClick);
   document.addEventListener('keydown', handleKeyPopup);
@@ -25,4 +25,4 @@ function onClosePopupWindow(popup){
 }
 
 
-export {onOpenPopupWindow, onClosePopupWindow};
+export {openPopupWindow, onClosePopupWindow};

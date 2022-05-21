@@ -1,4 +1,4 @@
-import { onOpenPopupWindow, onClosePopupWindow } from "./utils.js";
+import { openPopupWindow, onClosePopupWindow } from "./utils.js";
 import { initialCards } from './cards.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
@@ -37,14 +37,14 @@ function handleCardClick(name, link){
   popupPreviewImage.src = link;
   popupPreviewImage.alt = name;
   popupPreviewCaption.textContent = name;
-  onOpenPopupWindow(popupPhotoPreviewWindow);
+  openPopupWindow(popupPhotoPreviewWindow);
 }
 
-function onOpenPopupProfileWindow(){
+function openPopupProfileWindow(){
   popupInputName.value = profileTitle.textContent;
   popupInputDescription.value = profileSubtitle.textContent;
   profileValidator.resetValidation();
-  onOpenPopupWindow(popupProfileWindow);
+  openPopupWindow(popupProfileWindow);
 }
 
 function onSubmitPopupProfileWindow(evt){
@@ -54,10 +54,10 @@ function onSubmitPopupProfileWindow(evt){
   onClosePopupWindow(popupProfileWindow);
 }
 
-function onOpenPopupCardsWindow(){
+function openPopupCardsWindow(){
   popupCardsForm.reset();
   cardValidator.resetValidation();
-  onOpenPopupWindow(popupCardsWindow);
+  openPopupWindow(popupCardsWindow);
 }
 
 function onSubmitPopupCardsWindow(evt){
@@ -69,9 +69,9 @@ function onSubmitPopupCardsWindow(evt){
   onClosePopupWindow(popupCardsWindow);
 }
 
-profileEditButton.addEventListener('click', onOpenPopupProfileWindow);
+profileEditButton.addEventListener('click', openPopupProfileWindow);
 popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
-cardAddButton.addEventListener('click', onOpenPopupCardsWindow);
+cardAddButton.addEventListener('click', openPopupCardsWindow);
 popupCardsForm.addEventListener('submit',onSubmitPopupCardsWindow);
 
 addInitialPhotos();
