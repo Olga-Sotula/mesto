@@ -1,11 +1,5 @@
-import { onOpenPopupWindow } from "./utils.js";
-
-const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
-const popupPreviewImage = popupPhotoPreviewWindow.querySelector('.popup__image');
-const popupPreviewCaption =   popupPhotoPreviewWindow.querySelector('.popup__caption');
-
 export class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
@@ -14,6 +8,7 @@ export class Card {
     this._elementTitle = null;
     this._elementLike = null;
     this._elementRemove = null;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -24,13 +19,6 @@ export class Card {
       .cloneNode(true);
 
     return cardElement;
-  }
-
-  _handleOpenPhotoPreviewWindow() {
-    popupPreviewImage.src = this._link;
-    popupPreviewImage.alt = this._name;
-    popupPreviewCaption.textContent = this._name;
-    onOpenPopupWindow(popupPhotoPreviewWindow);
   }
 
   _handleLikeToggle() {
@@ -44,7 +32,7 @@ export class Card {
   _setEventListeners() {
     this._elementLike.addEventListener('click', () => {this._handleLikeToggle()});
     this._elementRemove.addEventListener('click', () => {this._handlePhotoDelete()});
-    this._elementImage.addEventListener('click', () => {this._handleOpenPhotoPreviewWindow()});
+    this._elementImage.addEventListener('click', () => {this._handleCardClick(this._name, this._link)});
   }
 
   generateCard() {

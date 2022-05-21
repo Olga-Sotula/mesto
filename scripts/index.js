@@ -19,14 +19,24 @@ const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const popupCardsNameInput = document.querySelector('.popup__input_type_photo-name');
 const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url');
 const popupCardsSubmit = popupCardsForm.querySelector('.popup__submit');
+const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
+const popupPreviewImage = popupPhotoPreviewWindow.querySelector('.popup__image');
+const popupPreviewCaption =   popupPhotoPreviewWindow.querySelector('.popup__caption');
 
 function addInitialPhotos(){
   initialCards.forEach((item) => {
-    const card = new Card(item, '#photo-template');
+    const card = new Card(item, '#photo-template', handleCardClick);
     const cardElement = card.generateCard();
 
     photoContainer.append(cardElement);
   });
+}
+
+function handleCardClick(name, link){
+  popupPreviewImage.src = link;
+  popupPreviewImage.alt = name;
+  popupPreviewCaption.textContent = name;
+  onOpenPopupWindow(popupPhotoPreviewWindow);
 }
 
 function resetFormErrors(form){
@@ -69,7 +79,7 @@ function onSubmitPopupCardsWindow(evt){
   evt.preventDefault();
   const photoTitle = popupCardsNameInput.value;
   const photoUrl = popupCardsUrlInput.value;
-  const card = new Card({name: photoTitle, link: photoUrl}, '#photo-template');
+  const card = new Card({name: photoTitle, link: photoUrl}, '#photo-template', handleCardClick);
   const cardElement = card.generateCard();
   photoContainer.prepend(cardElement);
   onClosePopupWindow(popupCardsWindow);
