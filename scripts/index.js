@@ -13,12 +13,10 @@ const popupProfileWindow = document.querySelector('.popup_type_profile');
 const popupProfileForm = document.querySelector('.popup__form_type_profile');
 const popupInputName = popupProfileForm.querySelector('.popup__input_type_fullname');
 const popupInputDescription = popupProfileForm.querySelector('.popup__input_type_description');
-const popupProfileSubmit = popupProfileForm.querySelector('.popup__submit');
 const popupCardsWindow = document.querySelector('.popup_type_cards');
 const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const popupCardsNameInput = document.querySelector('.popup__input_type_photo-name');
 const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url');
-const popupCardsSubmit = popupCardsForm.querySelector('.popup__submit');
 const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
 const popupPreviewImage = popupPhotoPreviewWindow.querySelector('.popup__image');
 const popupPreviewCaption =   popupPhotoPreviewWindow.querySelector('.popup__caption');
@@ -43,7 +41,7 @@ function handleCardClick(name, link){
 function openPopupProfileWindow(){
   popupInputName.value = profileTitle.textContent;
   popupInputDescription.value = profileSubtitle.textContent;
-  formValidators["editProfileForm"].resetValidation();
+  formValidators[popupProfileForm.getAttribute('name')].resetValidation();
   openPopupWindow(popupProfileWindow);
 }
 
@@ -56,7 +54,7 @@ function handleProfileFormSubmit(evt){
 
 function openPopupCardsWindow(){
   popupCardsForm.reset();
-  formValidators["addCardForm"].resetValidation();
+  formValidators[popupCardsForm.getAttribute('name')].resetValidation();
   openPopupWindow(popupCardsWindow);
 }
 
@@ -92,18 +90,11 @@ const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector))
   formList.forEach((formElement) => {
     const validator = new FormValidator(formElement, config)
-// получаем данные из атрибута `name` у формы
     const formName = formElement.getAttribute('name')
-
-   // вот тут в объект записываем под именем формы
     formValidators[formName] = validator;
    validator.enableValidation();
   });
 };
 
 enableValidation(validatorConfig);
-console.log(formValidators);
-/*const profileValidator = new FormValidator(validatorConfig, popupProfileForm);
-profileValidator.enableValidation();
-const cardValidator = new FormValidator(validatorConfig, popupCardsForm);
-cardValidator.enableValidation();*/
+
