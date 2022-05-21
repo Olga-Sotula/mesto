@@ -14,13 +14,13 @@ function handleKeyPopup(evt){
 
 function openPopupWindow(popup){
   popup.classList.add('popup_opened');
-  popup.addEventListener('click', handleOverlayClick);
+  popup.addEventListener('mousedown', handleOverlayClick);
   document.addEventListener('keydown', handleKeyPopup);
 }
 
 function closePopupWindow(popup){
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('click', handleOverlayClick);
+  popup.removeEventListener('mousedown', handleOverlayClick);
   document.removeEventListener('keydown', handleKeyPopup);
 }
 
