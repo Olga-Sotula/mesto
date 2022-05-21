@@ -23,11 +23,14 @@ const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
 const popupPreviewImage = popupPhotoPreviewWindow.querySelector('.popup__image');
 const popupPreviewCaption =   popupPhotoPreviewWindow.querySelector('.popup__caption');
 
+function createCard(data){
+  const card = new Card(data, '#photo-template', handleCardClick);
+  return card.generateCard();
+}
+
 function addInitialPhotos(){
   initialCards.forEach((item) => {
-    const card = new Card(item, '#photo-template', handleCardClick);
-    const cardElement = card.generateCard();
-
+    const cardElement = createCard(item);
     photoContainer.append(cardElement);
   });
 }
@@ -70,8 +73,7 @@ function onSubmitPopupCardsWindow(evt){
   evt.preventDefault();
   const photoTitle = popupCardsNameInput.value;
   const photoUrl = popupCardsUrlInput.value;
-  const card = new Card({name: photoTitle, link: photoUrl}, '#photo-template', handleCardClick);
-  const cardElement = card.generateCard();
+  const cardElement = createCard({name: photoTitle, link: photoUrl});
   photoContainer.prepend(cardElement);
   onClosePopupWindow(popupCardsWindow);
 }
