@@ -40,16 +40,10 @@ function handleCardClick(name, link){
   onOpenPopupWindow(popupPhotoPreviewWindow);
 }
 
-function setSubmitDisabled(button, isDisabled){
-  button.classList.toggle('popup__submit_disabled', isDisabled);
-  button.disabled = isDisabled;
-}
-
 function onOpenPopupProfileWindow(){
   popupInputName.value = profileTitle.textContent;
   popupInputDescription.value = profileSubtitle.textContent;
   profileValidator.resetValidation();
-  setSubmitDisabled(popupProfileSubmit, false);
   onOpenPopupWindow(popupProfileWindow);
 }
 
@@ -63,7 +57,6 @@ function onSubmitPopupProfileWindow(evt){
 function onOpenPopupCardsWindow(){
   popupCardsForm.reset();
   cardValidator.resetValidation();
-  setSubmitDisabled(popupCardsSubmit, true);
   onOpenPopupWindow(popupCardsWindow);
 }
 
