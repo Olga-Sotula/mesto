@@ -43,7 +43,7 @@ function handleCardClick(name, link){
 function openPopupProfileWindow(){
   popupInputName.value = profileTitle.textContent;
   popupInputDescription.value = profileSubtitle.textContent;
-  profileValidator.resetValidation();
+  formValidators["editProfileForm"].resetValidation();
   openPopupWindow(popupProfileWindow);
 }
 
@@ -56,7 +56,7 @@ function handleProfileFormSubmit(evt){
 
 function openPopupCardsWindow(){
   popupCardsForm.reset();
-  cardValidator.resetValidation();
+  formValidators["addCardForm"].resetValidation();
   openPopupWindow(popupCardsWindow);
 }
 
@@ -85,7 +85,25 @@ const validatorConfig = {
   errorClass: 'popup__error_visible'
 };
 
-const profileValidator = new FormValidator(validatorConfig, popupProfileForm);
+const formValidators = {}
+
+// Включение валидации
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector))
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(formElement, config)
+// получаем данные из атрибута `name` у формы
+    const formName = formElement.getAttribute('name')
+
+   // вот тут в объект записываем под именем формы
+    formValidators[formName] = validator;
+   validator.enableValidation();
+  });
+};
+
+enableValidation(validatorConfig);
+console.log(formValidators);
+/*const profileValidator = new FormValidator(validatorConfig, popupProfileForm);
 profileValidator.enableValidation();
 const cardValidator = new FormValidator(validatorConfig, popupCardsForm);
-cardValidator.enableValidation();
+cardValidator.enableValidation();*/
