@@ -29,10 +29,8 @@ function createCard(data){
 }
 
 function addInitialPhotos(){
-  initialCards.forEach((item) => {
-    const cardElement = createCard(item);
-    photoContainer.append(cardElement);
-  });
+  const cards = initialCards.map(createCard);
+  photoContainer.append(...cards);
 }
 
 function handleCardClick(name, link){
