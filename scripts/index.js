@@ -47,7 +47,7 @@ function openPopupProfileWindow(){
   openPopupWindow(popupProfileWindow);
 }
 
-function onSubmitPopupProfileWindow(evt){
+function handleProfileFormSubmit(evt){
   evt.preventDefault();
   profileTitle.textContent = popupInputName.value;
   profileSubtitle.textContent = popupInputDescription.value;
@@ -60,7 +60,7 @@ function openPopupCardsWindow(){
   openPopupWindow(popupCardsWindow);
 }
 
-function onSubmitPopupCardsWindow(evt){
+function handleCardFormSubmit(evt){
   evt.preventDefault();
   const photoTitle = popupCardsNameInput.value;
   const photoUrl = popupCardsUrlInput.value;
@@ -70,9 +70,9 @@ function onSubmitPopupCardsWindow(evt){
 }
 
 profileEditButton.addEventListener('click', openPopupProfileWindow);
-popupProfileForm.addEventListener('submit',onSubmitPopupProfileWindow);
+popupProfileForm.addEventListener('submit',handleProfileFormSubmit);
 cardAddButton.addEventListener('click', openPopupCardsWindow);
-popupCardsForm.addEventListener('submit',onSubmitPopupCardsWindow);
+popupCardsForm.addEventListener('submit',handleCardFormSubmit);
 
 addInitialPhotos();
 
