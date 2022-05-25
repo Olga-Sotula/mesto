@@ -27,10 +27,7 @@ const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const popupCardsNameInput = document.querySelector('.popup__input_type_photo-name');
 const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url');
 
-function handleCardClick(name, link){
-  popupCardPreview.open(name, link);
-}
-
+//Профиль пользователя
 function openPopupProfileWindow(){
   popupProfile.getForm().querySelector(popupProfileNameSelector).value = profileTitle.textContent;
   popupProfile.getForm().querySelector(popupProfileDescriptionSelector).value = profileSubtitle.textContent;
@@ -44,28 +41,27 @@ function handleProfileFormSubmit(formData){
   popupProfile.close();
 }
 
-function openPopupCardsWindow(){
-  popupCardsForm.reset();
-  formValidators[popupCardsForm.getAttribute('name')].resetValidation();
-  openPopupWindow(popupCardsWindow);
+//Карточки с фотографиями
+function handleCardClick(name, link){
+  popupCardPreview.open(name, link);
 }
 
-function handleCardFormSubmit(evt){
-  evt.preventDefault();
-  const photoTitle = popupCardsNameInput.value;
-  const photoUrl = popupCardsUrlInput.value;
-  const cardElement = createCard({name: photoTitle, link: photoUrl});
+
+function openPopupCardsWindow(){
+  formValidators[popupCreateCard.getForm().getAttribute('name')].resetValidation();
+  popupCreateCard.open();
+}
+
+function handleCardFormSubmit(formData){
+  const cardElement = createCard({name: formData.photoName, link: formData.photoUrl});
   defaultCardList.addItem(cardElement);
-  closePopupWindow(popupCardsWindow);
+  popupCreateCard.close();
 }
 
 profileEditButton.addEventListener('click', openPopupProfileWindow);
 
 cardAddButton.addEventListener('click', openPopupCardsWindow);
-popupCardsForm.addEventListener('submit',handleCardFormSubmit);
 
-//addInitialPhotos();
-//Отрисовка карточек
 function createCard(data){
   const card = new Card(data, '#photo-template', handleCardClick);
   return card.generateCard();
