@@ -1,4 +1,5 @@
 import {
+  initialUserInfo,
   cardListSelector,
   popupCardPreviewSelector,
   popupPreviewImageSelector,
@@ -11,6 +12,7 @@ import {
 
 import { initialCards } from '../utils/cards.js';
 import Section from "../components/Section.js";
+import UserInfo from '../components/UserInfo.js';
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
@@ -22,6 +24,8 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 
 //Профиль пользователя
+const userInfo = new UserInfo(initialUserInfo);
+
 function openPopupProfileWindow(){
   popupProfile.getForm().querySelector(popupProfileNameSelector).value = profileTitle.textContent;
   popupProfile.getForm().querySelector(popupProfileDescriptionSelector).value = profileSubtitle.textContent;
