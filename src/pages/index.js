@@ -28,13 +28,15 @@ const cardAddButton = document.querySelector('.profile__add-button');
 const userInfo = new UserInfo(initialUserInfo);
 
 function openPopupProfileWindow(){
-  popupProfile.getForm().querySelector(popupProfileNameSelector).value = profileTitle.textContent;
-  popupProfile.getForm().querySelector(popupProfileDescriptionSelector).value = profileSubtitle.textContent;
+  const d = userInfo.getUserInfo();
+  popupProfile.getForm().querySelector(popupProfileNameSelector).value = userInfo.getUserInfo().name;
+  popupProfile.getForm().querySelector(popupProfileDescriptionSelector).value = userInfo.getUserInfo().description;
   formValidators[popupProfile.getForm().getAttribute('name')].resetValidation();
   popupProfile.open();
 }
 
 function handleProfileFormSubmit(formData){
+  userInfo.setUserInfo({name:formData.fullName, description: formData.description});
   profileTitle.textContent = formData.fullName;
   profileSubtitle.textContent = formData.description;
   popupProfile.close();
