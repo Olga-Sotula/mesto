@@ -1,5 +1,9 @@
+import {
+  cardListSelector
+} from '../utils/constants.js';
+
 import { openPopupWindow, closePopupWindow } from "../scripts/utils.js";
-import { initialCards } from '../components/cards.js';
+import { initialCards } from '../utils/cards.js';
 import Section from "../components/Section.js";
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
@@ -8,7 +12,6 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
-const photoContainer = document.querySelector('.photos__grid');
 
 const popupProfileWindow = document.querySelector('.popup_type_profile');
 const popupProfileForm = document.querySelector('.popup__form_type_profile');
@@ -21,16 +24,6 @@ const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url'
 const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
 const popupPreviewImage = popupPhotoPreviewWindow.querySelector('.popup__image');
 const popupPreviewCaption =   popupPhotoPreviewWindow.querySelector('.popup__caption');
-
-/*function createCard(data){
-  const card = new Card(data, '#photo-template', handleCardClick);
-  return card.generateCard();
-}
-
-function addInitialPhotos(){
-  const cards = initialCards.map(createCard);
-  photoContainer.append(...cards);
-}*/
 
 function handleCardClick(name, link){
   popupPreviewImage.src = link;
@@ -75,7 +68,7 @@ popupCardsForm.addEventListener('submit',handleCardFormSubmit);
 
 //addInitialPhotos();
 //Стартовая отрисовка карточек
-const defaultCardList = new Section(initialCards, '.photos__grid');
+const defaultCardList = new Section(initialCards, cardListSelector);
 defaultCardList.renderItems();
 
 const validatorConfig = {
