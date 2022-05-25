@@ -1,7 +1,7 @@
-import { openPopupWindow, closePopupWindow } from "./utils.js";
-import { initialCards } from './cards.js';
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
+import { openPopupWindow, closePopupWindow } from "../scripts/utils.js";
+import { initialCards } from '../components/cards.js';
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
 
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
