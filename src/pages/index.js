@@ -56,9 +56,7 @@ function handleCardFormSubmit(evt){
   evt.preventDefault();
   const photoTitle = popupCardsNameInput.value;
   const photoUrl = popupCardsUrlInput.value;
-  //const cardElement = createCard({name: photoTitle, link: photoUrl});
-  const card = new Card({name: photoTitle, link: photoUrl}, '#photo-template', handleCardClick);
-  const cardElement = card.generateCard();
+  const cardElement = createCard({name: photoTitle, link: photoUrl});
   defaultCardList.setItem(cardElement);
   closePopupWindow(popupCardsWindow);
 }
@@ -69,11 +67,15 @@ cardAddButton.addEventListener('click', openPopupCardsWindow);
 popupCardsForm.addEventListener('submit',handleCardFormSubmit);
 
 //addInitialPhotos();
-//Стартовая отрисовка карточек
+//Отрисовка карточек
+function createCard(data){
+  const card = new Card(data, '#photo-template', handleCardClick);
+  return card.generateCard();
+}
+
 const defaultCardList = new Section({data: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '#photo-template', handleCardClick);
-    const cardElement = card.generateCard();
+    const cardElement = createCard(item);
     defaultCardList.setItem(cardElement);
   }}, cardListSelector);
 
