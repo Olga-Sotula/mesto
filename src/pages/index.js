@@ -1,5 +1,6 @@
 import {
-  cardListSelector
+  cardListSelector,
+  popupCardPreviewSelector
 } from '../utils/constants.js';
 
 import { openPopupWindow, closePopupWindow } from "../scripts/utils.js";
@@ -7,6 +8,7 @@ import { initialCards } from '../utils/cards.js';
 import Section from "../components/Section.js";
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
+import Popup from '../components/Popup.js';
 
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
@@ -21,15 +23,14 @@ const popupCardsWindow = document.querySelector('.popup_type_cards');
 const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const popupCardsNameInput = document.querySelector('.popup__input_type_photo-name');
 const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url');
-const popupPhotoPreviewWindow = document.querySelector('.popup_type_preview');
-const popupPreviewImage = popupPhotoPreviewWindow.querySelector('.popup__image');
-const popupPreviewCaption =   popupPhotoPreviewWindow.querySelector('.popup__caption');
+//const popupPreviewImage = popupPhotoPreviewWindow.querySelector('.popup__image');
+//const popupPreviewCaption =   popupPhotoPreviewWindow.querySelector('.popup__caption');
 
 function handleCardClick(name, link){
-  popupPreviewImage.src = link;
+  /*popupPreviewImage.src = link;
   popupPreviewImage.alt = name;
-  popupPreviewCaption.textContent = name;
-  openPopupWindow(popupPhotoPreviewWindow);
+  popupPreviewCaption.textContent = name;*/
+  popupCardPreview.open();
 }
 
 function openPopupProfileWindow(){
@@ -91,6 +92,10 @@ const validatorConfig = {
 };
 
 const formValidators = {}
+
+//Попап просмотра карточки
+const popupCardPreview = new Popup(popupCardPreviewSelector);
+popupCardPreview.setEventListeners();
 
 // Включение валидации
 const enableValidation = (config) => {
