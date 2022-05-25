@@ -2,7 +2,11 @@ import {
   cardListSelector,
   popupCardPreviewSelector,
   popupPreviewImageSelector,
-  popupPreviewCaptionSelector
+  popupPreviewCaptionSelector,
+  popupProfileSelector,
+  popupProfileNameSelector,
+  popupProfileDescriptionSelector,
+  popupCreateCardSelector
 } from '../utils/constants.js';
 
 import { openPopupWindow, closePopupWindow } from "../scripts/utils.js";
@@ -12,17 +16,13 @@ import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
 
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 
-const popupProfileWindow = document.querySelector('.popup_type_profile');
-const popupProfileForm = document.querySelector('.popup__form_type_profile');
-const popupInputName = popupProfileForm.querySelector('.popup__input_type_fullname');
-const popupInputDescription = popupProfileForm.querySelector('.popup__input_type_description');
-const popupCardsWindow = document.querySelector('.popup_type_cards');
 const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const popupCardsNameInput = document.querySelector('.popup__input_type_photo-name');
 const popupCardsUrlInput = document.querySelector('.popup__input_type_photo-url');
@@ -32,17 +32,16 @@ function handleCardClick(name, link){
 }
 
 function openPopupProfileWindow(){
-  popupInputName.value = profileTitle.textContent;
-  popupInputDescription.value = profileSubtitle.textContent;
-  formValidators[popupProfileForm.getAttribute('name')].resetValidation();
-  openPopupWindow(popupProfileWindow);
+  popupProfile.getForm().querySelector(popupProfileNameSelector).value = profileTitle.textContent;
+  popupProfile.getForm().querySelector(popupProfileDescriptionSelector).value = profileSubtitle.textContent;
+  formValidators[popupProfile.getForm().getAttribute('name')].resetValidation();
+  popupProfile.open();
 }
 
-function handleProfileFormSubmit(evt){
-  evt.preventDefault();
-  profileTitle.textContent = popupInputName.value;
-  profileSubtitle.textContent = popupInputDescription.value;
-  closePopupWindow(popupProfileWindow);
+function handleProfileFormSubmit(formData){
+  profileTitle.textContent = formData.fullName;
+  profileSubtitle.textContent = formData.description;
+  popupProfile.close();
 }
 
 function openPopupCardsWindow(){
@@ -61,7 +60,7 @@ function handleCardFormSubmit(evt){
 }
 
 profileEditButton.addEventListener('click', openPopupProfileWindow);
-popupProfileForm.addEventListener('submit',handleProfileFormSubmit);
+
 cardAddButton.addEventListener('click', openPopupCardsWindow);
 popupCardsForm.addEventListener('submit',handleCardFormSubmit);
 
@@ -94,6 +93,13 @@ const formValidators = {}
 //Попап просмотра карточки
 const popupCardPreview = new PopupWithImage(popupPreviewImageSelector, popupPreviewCaptionSelector, popupCardPreviewSelector);
 popupCardPreview.setEventListeners();
+
+//Попапы форм редактирования профиля и добавления карточки
+const popupProfile = new PopupWithForm(handleProfileFormSubmit, popupProfileSelector);
+popupProfile.setEventListeners();
+
+const popupCreateCard = new PopupWithForm(handleCardFormSubmit, popupCreateCardSelector);
+popupCreateCard.setEventListeners();
 
 // Включение валидации
 const enableValidation = (config) => {
