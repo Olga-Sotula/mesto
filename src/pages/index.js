@@ -7,7 +7,8 @@ import {
   popupProfileSelector,
   popupProfileNameSelector,
   popupProfileDescriptionSelector,
-  popupCreateCardSelector
+  popupCreateCardSelector,
+  validatorConfig
 } from '../utils/constants.js';
 
 import { initialCards } from '../utils/cards.js';
@@ -73,17 +74,6 @@ const defaultCardList = new Section({data: initialCards,
 
 defaultCardList.renderItems();
 
-const validatorConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
-
-const formValidators = {}
-
 //Попап просмотра карточки
 const popupCardPreview = new PopupWithImage(popupPreviewImageSelector, popupPreviewCaptionSelector, popupCardPreviewSelector);
 popupCardPreview.setEventListeners();
@@ -96,6 +86,8 @@ const popupCreateCard = new PopupWithForm(handleCardFormSubmit, popupCreateCardS
 popupCreateCard.setEventListeners();
 
 // Включение валидации
+const formValidators = {};
+
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector))
   formList.forEach((formElement) => {
