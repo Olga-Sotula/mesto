@@ -56,8 +56,10 @@ function handleCardFormSubmit(evt){
   evt.preventDefault();
   const photoTitle = popupCardsNameInput.value;
   const photoUrl = popupCardsUrlInput.value;
-  const cardElement = createCard({name: photoTitle, link: photoUrl});
-  photoContainer.prepend(cardElement);
+  //const cardElement = createCard({name: photoTitle, link: photoUrl});
+  const card = new Card({name: photoTitle, link: photoUrl}, '#photo-template', handleCardClick);
+  const cardElement = card.generateCard();
+  defaultCardList.setItem(cardElement);
   closePopupWindow(popupCardsWindow);
 }
 
