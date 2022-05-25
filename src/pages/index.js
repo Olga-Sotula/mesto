@@ -57,7 +57,7 @@ function handleCardFormSubmit(evt){
   const photoTitle = popupCardsNameInput.value;
   const photoUrl = popupCardsUrlInput.value;
   const cardElement = createCard({name: photoTitle, link: photoUrl});
-  defaultCardList.setItem(cardElement);
+  defaultCardList.addItem(cardElement);
   closePopupWindow(popupCardsWindow);
 }
 

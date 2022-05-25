@@ -3,16 +3,19 @@ export default class Section {
     this._initialArray = data;
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
-
   }
 
   renderItems() {
-    this._initialArray.reverse().forEach(item => {
+    this._initialArray.forEach(item => {
       this._renderer(item);
     });
   }
 
   setItem(element) {
+    this._container.append(element);
+  }
+
+  addItem(element) {
     this._container.prepend(element);
   }
 }
