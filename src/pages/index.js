@@ -68,7 +68,13 @@ popupCardsForm.addEventListener('submit',handleCardFormSubmit);
 
 //addInitialPhotos();
 //Стартовая отрисовка карточек
-const defaultCardList = new Section(initialCards, cardListSelector);
+const defaultCardList = new Section({data: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, '#photo-template', handleCardClick);
+    const cardElement = card.generateCard();
+    defaultCardList.setItem(cardElement);
+  }}, cardListSelector);
+
 defaultCardList.renderItems();
 
 const validatorConfig = {

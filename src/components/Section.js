@@ -1,17 +1,14 @@
-import { Card } from '../components/Card.js';
-
 export default class Section {
-  constructor(items, containerSelector) {
-    this._initialArray = items;
+  constructor({data, renderer}, containerSelector) {
+    this._initialArray = data;
+    this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
 
   }
 
   renderItems() {
-    this._initialArray.forEach(data => {
-      const card = new Card(data, '#photo-template', null);//handleCardClick
-      const cardElement = card.generateCard();
-      this.setItem(cardElement);
+    this._initialArray.forEach(item => {
+      this._renderer(item);
     });
   }
 
