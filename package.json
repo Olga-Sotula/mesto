@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Olga-Sotula/mesto/issues"
   },
-  "homepage": "https://github.com/Olga-Sotula/mesto#readme"
+  "homepage": "https://github.com/Olga-Sotula/mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  }
 }
