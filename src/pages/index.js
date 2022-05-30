@@ -30,7 +30,10 @@ const cardAddButton = document.querySelector('.profile__add-button');
 const userInfo = new UserInfo(initialUserInfo);
 
 function openPopupProfileWindow(){
-  popupProfile.setFormValues(popupProfileNameSelector, userInfo.getUserInfo().name, popupProfileDescriptionSelector, userInfo.getUserInfo().description);
+  popupProfile.setFormValues([
+    {value: userInfo.getUserInfo().name, selector: popupProfileNameSelector},
+    {value: userInfo.getUserInfo().description, selector: popupProfileDescriptionSelector}]);
+
   formValidators[popupProfile.getForm().getAttribute('name')].resetValidation();
   popupProfile.open();
 }
