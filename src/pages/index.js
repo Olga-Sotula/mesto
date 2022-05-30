@@ -99,7 +99,7 @@ const enableValidation = (config) => {
     const validator = new FormValidator(formElement, config)
     const formName = formElement.getAttribute('name')
     formValidators[formName] = validator;
-   validator.enableValidation();
+    validator.enableValidation();
   });
 };
 
