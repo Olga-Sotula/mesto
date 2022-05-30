@@ -18,6 +18,11 @@ export default class PopupWithForm extends Popup {
     return this._formValues;
   }
 
+  setInputValues(nameSelector, name, descriptionSelector, description) {
+    this._form().querySelector(nameSelector).value = name;
+    this._form().querySelector(descriptionSelector).value = description;
+  }
+
   getForm() {
     return this._form;
   }
