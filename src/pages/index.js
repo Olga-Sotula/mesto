@@ -34,7 +34,7 @@ function openPopupProfileWindow(){
     {value: userInfo.getUserInfo().name, selector: popupProfileNameSelector},
     {value: userInfo.getUserInfo().description, selector: popupProfileDescriptionSelector}]);
 
-  formValidators[popupProfile.getForm().getAttribute('name')].resetValidation();
+  formValidators[popupProfile.getFormName()].resetValidation();
   popupProfile.open();
 }
 
@@ -52,7 +52,7 @@ function handleCardClick(name, link){
 
 
 function openPopupCardsWindow(){
-  formValidators[popupCreateCard.getForm().getAttribute('name')].resetValidation();
+  formValidators[popupCreateCard.getFormName()].resetValidation();
   popupCreateCard.open();
 }
 
