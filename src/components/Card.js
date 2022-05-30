@@ -27,6 +27,7 @@ export class Card {
 
   _handlePhotoDelete() {
     this._element.remove();
+    this._element = null;
   }
 
   _setEventListeners() {
