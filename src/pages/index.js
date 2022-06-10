@@ -14,6 +14,7 @@ import {
 } from '../utils/constants.js';
 
 import { initialCards } from '../utils/cards.js';
+import Api from '../components/Api.js';
 import Section from "../components/Section.js";
 import UserInfo from '../components/UserInfo.js';
 import { Card } from '../components/Card.js';
@@ -71,13 +72,22 @@ function createCard(data){
   return card.generateCard();
 }
 
-const defaultCardList = new Section({data: initialCards,
-  renderer: (item) => {
-    const cardElement = createCard(item);
-    defaultCardList.setItem(cardElement);
-  }}, cardListSelector);
+const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43/', '94d6e346-3932-4dc4-bc64-13113fb0f452');
+api.getCards()
+  .then((initialCards) => {
+    const defaultCardList = new Section({data: initialCards,
+      renderer: (item) => {
+        const cardElement = createCard(item);
+        defaultCardList.setItem(cardElement);
+      }}, cardListSelector);
 
-defaultCardList.renderItems();
+    defaultCardList.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+
 
 //Попап просмотра карточки
 const popupCardPreview = new PopupWithImage(popupPreviewImageSelector, popupPreviewCaptionSelector, popupCardPreviewSelector);
