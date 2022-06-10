@@ -29,14 +29,15 @@ const cardAddButton = document.querySelector('.profile__add-button');
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43/', '94d6e346-3932-4dc4-bc64-13113fb0f452');
 
 //Загрузка стартовых данных с сервера: профиль пользователя, карточки
+let userInfo = {};
 let cards = [];
 let cardList = null;
 
 //let userInfo = {};
-Promise.all([api.getCards()])
-  .then(([initialCards]) => {
+Promise.all([api.getUserInfo(), api.getCards()])
+  .then(([initialUserInfo, initialCards]) => {
     cards = cards.concat(initialCards);
-
+    console.log(initialUserInfo);
 
 
 
@@ -54,7 +55,7 @@ Promise.all([api.getCards()])
   );
 
 //Профиль пользователя
-const userInfo = new UserInfo(initialUserInfo);
+userInfo = new UserInfo(initialUserInfo);
 
 function openPopupProfileWindow(){
   popupProfile.setFormValues([
