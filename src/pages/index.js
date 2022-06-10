@@ -13,7 +13,6 @@ import {
   validatorConfig
 } from '../utils/constants.js';
 
-import { initialCards } from '../utils/cards.js';
 import Api from '../components/Api.js';
 import Section from "../components/Section.js";
 import UserInfo from '../components/UserInfo.js';
@@ -26,6 +25,33 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
+
+const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43/', '94d6e346-3932-4dc4-bc64-13113fb0f452');
+
+//Загрузка стартовых данных с сервера: профиль пользователя, карточки
+let cards = [];
+let cardList = null;
+
+//let userInfo = {};
+Promise.all([api.getCards()])
+  .then(([initialCards]) => {
+    cards = cards.concat(initialCards);
+
+
+
+
+  })
+  .catch((err) => {console.log(err)})
+  .finally(() => {
+      cardList = new Section({data: cards,
+        renderer: (item) => {
+          const cardElement = createCard(item);
+          cardList.setItem(cardElement);
+        }}, cardListSelector);
+
+      cardList.renderItems();
+    }
+  );
 
 //Профиль пользователя
 const userInfo = new UserInfo(initialUserInfo);
@@ -72,20 +98,7 @@ function createCard(data){
   return card.generateCard();
 }
 
-const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43/', '94d6e346-3932-4dc4-bc64-13113fb0f452');
-api.getCards()
-  .then((initialCards) => {
-    const defaultCardList = new Section({data: initialCards,
-      renderer: (item) => {
-        const cardElement = createCard(item);
-        defaultCardList.setItem(cardElement);
-      }}, cardListSelector);
 
-    defaultCardList.renderItems();
-  })
-  .catch((err) => {
-    console.log(err);
-  })
 
 
 
