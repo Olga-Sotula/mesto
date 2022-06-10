@@ -1,4 +1,4 @@
-export const initialUserInfo = {name: "Жак-Ив Кусто", description: "Исследователь океана"};
+export const initialUserInfo = {name: "", description: ""};
 export const cardListSelector = '.photos__grid';
 
 export const popupCardPreviewSelector = '.popup_type_preview';

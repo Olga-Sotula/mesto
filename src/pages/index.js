@@ -29,21 +29,22 @@ const cardAddButton = document.querySelector('.profile__add-button');
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43/', '94d6e346-3932-4dc4-bc64-13113fb0f452');
 
 //Загрузка стартовых данных с сервера: профиль пользователя, карточки
-let userInfo = {};
+const userInfo = new UserInfo(initialUserInfo)
 let cards = [];
 let cardList = null;
 
 //let userInfo = {};
 Promise.all([api.getUserInfo(), api.getCards()])
-  .then(([initialUserInfo, initialCards]) => {
+  .then(([initialUser, initialCards]) => {
+    const {name, about} = initialUser;
+    userInfo.setUserInfo({name: name, description: about});
+
     cards = cards.concat(initialCards);
-    console.log(initialUserInfo);
-
-
-
   })
   .catch((err) => {console.log(err)})
   .finally(() => {
+      renderProfile();
+
       cardList = new Section({data: cards,
         renderer: (item) => {
           const cardElement = createCard(item);
@@ -55,7 +56,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
   );
 
 //Профиль пользователя
-userInfo = new UserInfo(initialUserInfo);
+;
 
 function openPopupProfileWindow(){
   popupProfile.setFormValues([
@@ -66,10 +67,15 @@ function openPopupProfileWindow(){
   popupProfile.open();
 }
 
+function renderProfile() {
+  const {name, description} = userInfo.getUserInfo();
+  profileTitle.textContent = name;
+  profileSubtitle.textContent = description;
+}
+
 function handleProfileFormSubmit(formData){
   userInfo.setUserInfo({name:formData.fullName, description: formData.description});
-  profileTitle.textContent = formData.fullName;
-  profileSubtitle.textContent = formData.description;
+  renderProfile();
   popupProfile.close();
 }
 
