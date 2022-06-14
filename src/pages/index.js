@@ -48,6 +48,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
   .then(([initialUser, initialCards]) => {
     const {
       _id,
+      avatar,
       name,
       about
     } = initialUser;
@@ -55,8 +56,9 @@ Promise.all([api.getUserInfo(), api.getCards()])
       name: name,
       description: about
     });
-    userInfo.setUserId(_id);
-
+    userInfo.setId(_id);
+    userInfo.setAvatar(avatar);
+    profileAvatar.src = userInfo.getAvatar();
     cards = cards.concat(initialCards);
   })
   .catch((err) => {
@@ -78,7 +80,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
 
 function openPopupAvatarWindow() {
   /*avatarProfile.setFormValues([{
-      value: userInfo.getUserInfo().name,
+      value: userInfo.getUrlUserInfo().name,
       selector: popupProfileNameSelector
     },
     {
@@ -169,7 +171,7 @@ function handleCardLike(card) {
   const method = likeButton.classList.contains('photo__like-button_active') ? 'DELETE' : 'PUT';
   api.updateLike(card.getId(), method)
     .then((res) => {
-      card.updateLikes(res.likes, userInfo.getUserId());
+      card.updateLikes(res.likes, userInfo.getId());
     })
     .catch((err) => {
       console.log(err)
@@ -232,7 +234,7 @@ cardAddButton.addEventListener('click', openPopupCardsWindow);
 function createCard(data) {
 
   const card = new Card(data, '#photo-template', handleCardClick, handleCardLike, handleCardDelete);
-  return card.generateCard(userInfo.getUserId());
+  return card.generateCard(userInfo.getId());
 }
 
 //Попап просмотра карточки

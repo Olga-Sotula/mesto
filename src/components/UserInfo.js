@@ -1,16 +1,25 @@
 export default class UserInfo {
   constructor(info) {
     this._id = info.id;
+    this._avatar = info.avatar;
     this._name = info.name;
     this._description = info.description;
   }
 
-  setUserId(id){
+  setId(id){
     this._id = id;
   }
 
-  getUserId() {
+  getId() {
     return this._id;
+  }
+
+  setAvatar(link) {
+    this._avatar = link;
+  }
+
+  getAvatar() {
+    return this._avatar;
   }
 
   getUserInfo() {
