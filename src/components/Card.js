@@ -22,7 +22,7 @@ export class Card {
   }
 
   _handleLikeToggle() {
-    this._elementLike.classList.toggle('photo__like_active');
+    this._elementLike.classList.toggle('photo__like-button_active');
   }
 
   _handlePhotoDelete() {
@@ -39,7 +39,7 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._elementTitle = this._element.querySelector('.photo__title');
-    this._elementLike = this._element.querySelector('.photo__like');
+    this._elementLike = this._element.querySelector('.photo__like-button');
     this._elementRemove = this._element.querySelector('.photo__rm');
     this._elementImage = this._element.querySelector('.photo__img');
 
