@@ -7,7 +7,7 @@ export default class Api {
     }
   }
 
-  _handleResponse(res, err){
+  _handleResponse(res, err) {
     if (res.ok) {
       return res.json();
     }
@@ -30,7 +30,7 @@ export default class Api {
         body: JSON.stringify(profile)
       })
       .then((res) => {
-        return this._handleResponse(res,'Ошибка обновления профайла');
+        return this._handleResponse(res, 'Ошибка обновления профайла');
       })
   }
 
@@ -40,7 +40,18 @@ export default class Api {
         headers: this._header
       })
       .then((res) => {
-        return this._handleResponse(res,'Ошибка загрузки карточек');
+        return this._handleResponse(res, 'Ошибка загрузки карточек');
+      })
+  }
+
+  addCard(card) {
+    return fetch(`${this._url}/cards`, {
+        method: 'POST',
+        headers: this._header,
+        body: JSON.stringify(card)
+      })
+      .then((res) => {
+        return this._handleResponse(res, 'Ошибка добавления карточки');
       })
   }
 }

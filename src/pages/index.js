@@ -16,9 +16,15 @@ import {
 import Api from '../components/Api.js';
 import Section from "../components/Section.js";
 import UserInfo from '../components/UserInfo.js';
-import { apiData } from "../utils/constants.js";
-import { Card } from '../components/Card.js';
-import { FormValidator } from '../components/FormValidator.js';
+import {
+  apiData
+} from "../utils/constants.js";
+import {
+  Card
+} from '../components/Card.js';
+import {
+  FormValidator
+} from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 
@@ -36,74 +42,120 @@ let cardList = null;
 
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([initialUser, initialCards]) => {
-    const {name, about} = initialUser;
-    userInfo.setUserInfo({name: name, description: about});
+    const {
+      name,
+      about
+    } = initialUser;
+    userInfo.setUserInfo({
+      name: name,
+      description: about
+    });
 
     cards = cards.concat(initialCards);
   })
-  .catch((err) => {console.log(err)})
+  .catch((err) => {
+    console.log(err)
+  })
   .finally(() => {
-      renderProfile();
+    renderProfile();
 
-      cardList = new Section({data: cards,
-        renderer: (item) => {
-          const cardElement = createCard(item);
-          cardList.setItem(cardElement);
-        }}, cardListSelector);
+    cardList = new Section({
+      data: cards,
+      renderer: (item) => {
+        const cardElement = createCard(item);
+        cardList.setItem(cardElement);
+      }
+    }, cardListSelector);
 
-      cardList.renderItems();
+    cardList.renderItems();
+  });
+
+function openPopupProfileWindow() {
+  popupProfile.setFormValues([{
+      value: userInfo.getUserInfo().name,
+      selector: popupProfileNameSelector
+    },
+    {
+      value: userInfo.getUserInfo().description,
+      selector: popupProfileDescriptionSelector
     }
-  );
-
-function openPopupProfileWindow(){
-  popupProfile.setFormValues([
-    {value: userInfo.getUserInfo().name, selector: popupProfileNameSelector},
-    {value: userInfo.getUserInfo().description, selector: popupProfileDescriptionSelector}]);
+  ]);
 
   formValidators[popupProfile.getFormName()].resetValidation();
   popupProfile.open();
 }
 
 function renderProfile() {
-  const {name, description} = userInfo.getUserInfo();
+  const {
+    name,
+    description
+  } = userInfo.getUserInfo();
   profileTitle.textContent = name;
   profileSubtitle.textContent = description;
 }
 
-function handleProfileFormSubmit(formData){
-  const name = formData.fullName, description = formData.description;
-  api.updateUserProfile({name: name, about: description})
+function handleProfileFormSubmit(formData) {
+  const name = formData.fullName,
+    description = formData.description;
+  api.updateUserProfile({
+      name: name,
+      about: description
+    })
     .then(() => {
-      userInfo.setUserInfo({name:formData.fullName, description: formData.description});
-      renderProfile();})
-    .catch((err) => {console.log(err)})
+      userInfo.setUserInfo({
+        name: formData.fullName,
+        description: formData.description
+      });
+      renderProfile();
+    })
+    .catch((err) => {
+      console.log(err)
+    })
     .finally(() => {
       popupProfile.close();
     });
 }
 
 //Карточки с фотографиями
-function handleCardClick(name, link){
+function handleCardClick(name, link) {
   popupCardPreview.open(name, link);
 }
 
 
-function openPopupCardsWindow(){
+function openPopupCardsWindow() {
   formValidators[popupCreateCard.getFormName()].resetValidation();
   popupCreateCard.open();
 }
 
-function handleCardFormSubmit(formData){
-  const cardElement = createCard({name: formData.photoName, link: formData.photoUrl});
-  defaultCardList.addItem(cardElement);
-  popupCreateCard.close();
+function handleCardFormSubmit(formData) {
+  const name = formData.photoName,
+    link = formData.photoUrl;
+  api.addCard({
+      name: name,
+      link: link
+    })
+    .then((res) => {
+      const cardElement = createCard({
+        name: name,
+        link: link
+      });
+      cards.unshift(res);
+      cardList.addItem(cardElement)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .finally(() => {
+      popupCreateCard.close();
+    });
 }
 
 profileEditButton.addEventListener('click', openPopupProfileWindow);
 
 cardAddButton.addEventListener('click', openPopupCardsWindow);
 
-function createCard(data){
+function createCard(data) {
+
   const card = new Card(data, '#photo-template', handleCardClick);
   return card.generateCard();
 }
@@ -137,4 +189,3 @@ const enableValidation = (config) => {
 };
 
 enableValidation(validatorConfig);
-
