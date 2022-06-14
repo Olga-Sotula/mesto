@@ -3,6 +3,8 @@ export class Card {
     this._name = data.name;
     this._link = data.link;
     this._countLikes = data.likes.length || 0;
+    this._ownerId = data.owner._id;
+    this._deleteEnabled = false;
     this._cardSelector = cardSelector;
     this._element = null;
     this._elementImage = null;
@@ -39,7 +41,8 @@ export class Card {
     this._elementImage.addEventListener('click', () => {this._handleCardClick(this._name, this._link)});
   }
 
-  generateCard() {
+  generateCard(userId) {
+    this._deleteEnabled = (this._ownerId === userId);
     this._element = this._getTemplate();
     this._elementTitle = this._element.querySelector('.photo__title');
     this._elementLikeButton = this._element.querySelector('.photo__like-button');
@@ -51,6 +54,8 @@ export class Card {
     this._elementImage.src = this._link;
     this._elementImage.alt = this._name;
     this._elementLikeCount.textContent = this._countLikes;
+    this._elementRemove.hidden = !this._deleteEnabled;
+    this._elementRemove.disabled = !this._deleteEnabled;
 
     this._setEventListeners();
 

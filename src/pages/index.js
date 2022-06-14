@@ -43,6 +43,7 @@ let cardList = null;
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([initialUser, initialCards]) => {
     const {
+      _id,
       name,
       about
     } = initialUser;
@@ -50,6 +51,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
       name: name,
       description: about
     });
+    userInfo.setUserId(_id);
 
     cards = cards.concat(initialCards);
   })
@@ -157,7 +159,7 @@ cardAddButton.addEventListener('click', openPopupCardsWindow);
 function createCard(data) {
 
   const card = new Card(data, '#photo-template', handleCardClick);
-  return card.generateCard();
+  return card.generateCard(userInfo.getUserId());
 }
 
 

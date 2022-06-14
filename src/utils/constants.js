@@ -4,7 +4,7 @@ export const apiData = {
   tocken: '94d6e346-3932-4dc4-bc64-13113fb0f452'
 }
 
-export const initialUserInfo = {name: "", description: ""};
+export const initialUserInfo = {id: "", name: "", description: ""};
 
 export const cardListSelector = '.photos__grid';
 
