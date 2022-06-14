@@ -16,6 +16,7 @@ import {
 import Api from '../components/Api.js';
 import Section from "../components/Section.js";
 import UserInfo from '../components/UserInfo.js';
+import { apiData } from "../utils/constants.js";
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
@@ -26,7 +27,7 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 
-const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43/', '94d6e346-3932-4dc4-bc64-13113fb0f452');
+const api = new Api(apiData.baseUrl, apiData.groupId, apiData.tocken);
 
 //Загрузка стартовых данных с сервера: профиль пользователя, карточки
 const userInfo = new UserInfo(initialUserInfo)
