@@ -34,6 +34,18 @@ export default class Api {
       })
   }
 
+  updateAvatar(url) {
+    return fetch(`${this._url}/users/me/avatar`, {
+        method: 'PATCH',
+        headers: this._header,
+        body: JSON.stringify({
+          avatar: url
+        })
+      })
+      .then((res) => {
+        return this._handleResponse(res, 'Ошибка изменения аватара карточки');
+      })
+  }
 
   getCards() {
     return fetch(`${this._url}/cards`, {
@@ -57,12 +69,12 @@ export default class Api {
 
   updateLike(id, method) {
     return fetch(`${this._url}/cards/${id}/likes`, {
-      method: method,
-      headers: this._header
-    })
-    .then((res) => {
-      return this._handleResponse(res, 'Ошибка изменения лайка карточки');
-    })
+        method: method,
+        headers: this._header
+      })
+      .then((res) => {
+        return this._handleResponse(res, 'Ошибка изменения лайка карточки');
+      })
   }
 
   deleteCard(id) {

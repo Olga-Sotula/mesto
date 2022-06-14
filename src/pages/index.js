@@ -7,6 +7,7 @@ import {
   popupPreviewImageSelector,
   popupPreviewCaptionSelector,
   popupAvatarSelector,
+  popupAvatarUrlSelector,
   popupProfileSelector,
   popupProfileNameSelector,
   popupProfileDescriptionSelector,
@@ -79,17 +80,12 @@ Promise.all([api.getUserInfo(), api.getCards()])
   });
 
 function openPopupAvatarWindow() {
-  /*avatarProfile.setFormValues([{
-      value: userInfo.getUrlUserInfo().name,
-      selector: popupProfileNameSelector
-    },
-    {
-      value: userInfo.getUserInfo().description,
-      selector: popupProfileDescriptionSelector
-    }
-  ]);
+  popupAvatar.setFormValues([{
+    value: userInfo.getAvatar(),
+    selector: popupAvatarUrlSelector
+  }]);
 
-  formValidators[popupProfile.getFormName()].resetValidation();*/
+  formValidators[popupAvatar.getFormName()].resetValidation();
   popupAvatar.open();
 }
 
@@ -140,25 +136,18 @@ function handleProfileFormSubmit(formData) {
 }
 
 function handleAvatarFormSubmit(formData) {
-  /*const name = formData.fullName,
-    description = formData.description;
-  api.updateUserProfile({
-      name: name,
-      about: description
-    })
+  const url = formData.avatarUrl;
+  api.updateAvatar(url)
     .then(() => {
-      userInfo.setUserInfo({
-        name: formData.fullName,
-        description: formData.description
-      });
-      renderProfile();
+      userInfo.setAvatar(url);
+      profileAvatar.src = userInfo.getAvatar();
     })
     .catch((err) => {
       console.log(err)
     })
     .finally(() => {
-      popupProfile.close();
-    });*/
+      popupAvatar.close();
+    });
 }
 
 //Карточки с фотографиями

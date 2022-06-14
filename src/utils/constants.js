@@ -13,6 +13,7 @@ export const popupPreviewImageSelector = '.popup__image';
 export const popupPreviewCaptionSelector = '.popup__caption';
 
 export const popupAvatarSelector = '.popup_type_avatar';
+export const popupAvatarUrlSelector = '.popup__input_type_avatar-url';
 
 export const popupProfileSelector = '.popup_type_profile';
 export const popupProfileNameSelector = '.popup__input_type_fullname';
