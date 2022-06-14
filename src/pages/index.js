@@ -34,7 +34,6 @@ const userInfo = new UserInfo(initialUserInfo)
 let cards = [];
 let cardList = null;
 
-//let userInfo = {};
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([initialUser, initialCards]) => {
     const {name, about} = initialUser;
@@ -56,9 +55,6 @@ Promise.all([api.getUserInfo(), api.getCards()])
     }
   );
 
-//Профиль пользователя
-;
-
 function openPopupProfileWindow(){
   popupProfile.setFormValues([
     {value: userInfo.getUserInfo().name, selector: popupProfileNameSelector},
@@ -75,9 +71,15 @@ function renderProfile() {
 }
 
 function handleProfileFormSubmit(formData){
-  userInfo.setUserInfo({name:formData.fullName, description: formData.description});
-  renderProfile();
-  popupProfile.close();
+  const name = formData.fullName, description = formData.description;
+  api.updateUserProfile({name: name, about: description})
+    .then(() => {
+      userInfo.setUserInfo({name:formData.fullName, description: formData.description});
+      renderProfile();})
+    .catch((err) => {console.log(err)})
+    .finally(() => {
+      popupProfile.close();
+    });
 }
 
 //Карточки с фотографиями
