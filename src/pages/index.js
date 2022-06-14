@@ -30,7 +30,7 @@ import {
 } from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithSubmit from "../components/PopupWithSubmit";
+import PopupWithConfirmation from "../components/PopupWithConfirmation";
 
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
@@ -242,7 +242,7 @@ popupAvatar.setEventListeners();
 const popupCreateCard = new PopupWithForm(handleCardFormSubmit, popupCreateCardSelector);
 popupCreateCard.setEventListeners();
 
-const popupSubmit = new PopupWithSubmit(deleteCardSubmit, popupSubmitSelector);
+const popupSubmit = new PopupWithConfirmation(deleteCardSubmit, popupSubmitSelector);
 popupSubmit.setEventListeners();
 
 // Включение валидации
