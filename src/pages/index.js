@@ -125,6 +125,22 @@ function handleCardClick(name, link) {
   popupCardPreview.open(name, link);
 }
 
+function handleCardLike(card) {
+  const likeButton = card.getLikeButton();
+  const method = likeButton.classList.contains('photo__like-button_active') ? 'DELETE' : 'PUT';
+  api.updateLike(card.getId(), method)
+    .then((res) => {
+      card.updateLikes(res.likes, userInfo.getUserId());
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .finally((res) => {
+      //
+    });
+
+}
+
 function handleCardDelete(element, id) {
   popupSubmit.open(element, id);
 }
@@ -175,7 +191,7 @@ cardAddButton.addEventListener('click', openPopupCardsWindow);
 
 function createCard(data) {
 
-  const card = new Card(data, '#photo-template', handleCardClick, handleCardDelete);
+  const card = new Card(data, '#photo-template', handleCardClick, handleCardLike, handleCardDelete);
   return card.generateCard(userInfo.getUserId());
 }
 

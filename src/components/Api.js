@@ -55,11 +55,20 @@ export default class Api {
       })
   }
 
+  updateLike(id, method) {
+    return fetch(`${this._url}/cards/${id}/likes`, {
+      method: method,
+      headers: this._header
+    })
+    .then((res) => {
+      return this._handleResponse(res, 'Ошибка изменения лайка карточки');
+    })
+  }
+
   deleteCard(id) {
     return fetch(`${this._url}/cards/${id}`, {
         method: 'DELETE',
         headers: this._header
-
       })
       .then((res) => {
         return this._handleResponse(res, 'Ошибка удаления карточки');
