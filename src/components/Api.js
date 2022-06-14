@@ -7,11 +7,11 @@ export default class Api {
     }
   }
 
-  _handleResponse(res, err) {
+  _handleResponse(res) {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(err);
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
 
   getUserInfo() {
@@ -19,7 +19,7 @@ export default class Api {
         headers: this._header
       })
       .then((res) => {
-        return this._handleResponse(res, 'Ошибка загрузки информации о пользователе');
+        return this._handleResponse(res);
       })
   }
 
@@ -30,7 +30,7 @@ export default class Api {
         body: JSON.stringify(profile)
       })
       .then((res) => {
-        return this._handleResponse(res, 'Ошибка обновления профайла');
+        return this._handleResponse(res);
       })
   }
 
@@ -43,7 +43,7 @@ export default class Api {
         })
       })
       .then((res) => {
-        return this._handleResponse(res, 'Ошибка изменения аватара карточки');
+        return this._handleResponse(res);
       })
   }
 
@@ -52,7 +52,7 @@ export default class Api {
         headers: this._header
       })
       .then((res) => {
-        return this._handleResponse(res, 'Ошибка загрузки карточек');
+        return this._handleResponse(res);
       })
   }
 
@@ -63,7 +63,7 @@ export default class Api {
         body: JSON.stringify(card)
       })
       .then((res) => {
-        return this._handleResponse(res, 'Ошибка добавления карточки');
+        return this._handleResponse(res);
       })
   }
 
@@ -73,7 +73,7 @@ export default class Api {
         headers: this._header
       })
       .then((res) => {
-        return this._handleResponse(res, 'Ошибка изменения лайка карточки');
+        return this._handleResponse(res);
       })
   }
 
@@ -83,7 +83,7 @@ export default class Api {
         headers: this._header
       })
       .then((res) => {
-        return this._handleResponse(res, 'Ошибка удаления карточки');
+        return this._handleResponse(res);
       })
   }
 }
