@@ -6,6 +6,7 @@ import {
   popupCardPreviewSelector,
   popupPreviewImageSelector,
   popupPreviewCaptionSelector,
+  popupAvatarSelector,
   popupProfileSelector,
   popupProfileNameSelector,
   popupProfileDescriptionSelector,
@@ -32,6 +33,7 @@ import PopupWithSubmit from "../components/PopupWithSubmit";
 
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
+const profileAvatar = document.querySelector('.profile__avatar');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 
@@ -73,6 +75,21 @@ Promise.all([api.getUserInfo(), api.getCards()])
 
     cardList.renderItems();
   });
+
+function openPopupAvatarWindow() {
+  /*avatarProfile.setFormValues([{
+      value: userInfo.getUserInfo().name,
+      selector: popupProfileNameSelector
+    },
+    {
+      value: userInfo.getUserInfo().description,
+      selector: popupProfileDescriptionSelector
+    }
+  ]);
+
+  formValidators[popupProfile.getFormName()].resetValidation();*/
+  popupAvatar.open();
+}
 
 function openPopupProfileWindow() {
   popupProfile.setFormValues([{
@@ -118,6 +135,28 @@ function handleProfileFormSubmit(formData) {
     .finally(() => {
       popupProfile.close();
     });
+}
+
+function handleAvatarFormSubmit(formData) {
+  /*const name = formData.fullName,
+    description = formData.description;
+  api.updateUserProfile({
+      name: name,
+      about: description
+    })
+    .then(() => {
+      userInfo.setUserInfo({
+        name: formData.fullName,
+        description: formData.description
+      });
+      renderProfile();
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .finally(() => {
+      popupProfile.close();
+    });*/
 }
 
 //Карточки с фотографиями
@@ -185,6 +224,7 @@ function handleCardFormSubmit(formData) {
     });
 }
 
+profileAvatar.addEventListener('click', openPopupAvatarWindow);
 profileEditButton.addEventListener('click', openPopupProfileWindow);
 
 cardAddButton.addEventListener('click', openPopupCardsWindow);
@@ -199,9 +239,12 @@ function createCard(data) {
 const popupCardPreview = new PopupWithImage(popupPreviewImageSelector, popupPreviewCaptionSelector, popupCardPreviewSelector);
 popupCardPreview.setEventListeners();
 
-//Попапы форм редактирования профиля, добавления карточки и подтверждения удаления
+//Попапы форм редактирования профиля, аватара, добавления карточки и подтверждения удаления
 const popupProfile = new PopupWithForm(handleProfileFormSubmit, popupProfileSelector);
 popupProfile.setEventListeners();
+
+const popupAvatar = new PopupWithForm(handleAvatarFormSubmit, popupAvatarSelector);
+popupAvatar.setEventListeners();
 
 const popupCreateCard = new PopupWithForm(handleCardFormSubmit, popupCreateCardSelector);
 popupCreateCard.setEventListeners();

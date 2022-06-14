@@ -12,6 +12,8 @@ export const popupCardPreviewSelector = '.popup_type_preview';
 export const popupPreviewImageSelector = '.popup__image';
 export const popupPreviewCaptionSelector = '.popup__caption';
 
+export const popupAvatarSelector = '.popup_type_avatar';
+
 export const popupProfileSelector = '.popup_type_profile';
 export const popupProfileNameSelector = '.popup__input_type_fullname';
 export const popupProfileDescriptionSelector = '.popup__input_type_description';

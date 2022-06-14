@@ -5,4 +5,11 @@
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
+  cursor: url('../../../images/edit-cursor.png'), pointer;
+}
+
+.profile__avatar:hover {
+  opacity: .8;
 }
