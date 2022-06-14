@@ -21,7 +21,7 @@ export const popupCreateCardSelector = '.popup_type_cards';
 export const popupSubmitSelector = '.popup_type_submit';
 
 export const validatorConfig = {
-  formSelector: '.popup__form',
+  formSelector: '.popup__form_validated',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
   inactiveButtonClass: 'popup__submit_disabled',
