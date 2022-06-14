@@ -32,11 +32,6 @@ export class Card {
     this._elementLikeButton.classList.toggle('photo__like-button_active');
   }
 
-  /*_handlePhotoDelete() {
-    this._element.remove();
-    this._element = null;
-  }*/
-
   _setEventListeners() {
     this._elementLikeButton.addEventListener('click', () => {
       this._handleLikeToggle()

@@ -129,7 +129,7 @@ function handleCardDelete(element, id) {
   popupSubmit.open(element, id);
 }
 
-function deleteCardSubmit(element, id){
+function deleteCardSubmit(element, id) {
   api.deleteCard(id)
     .then(() => {
       element.remove();
@@ -157,10 +157,7 @@ function handleCardFormSubmit(formData) {
       link: link
     })
     .then((res) => {
-      const cardElement = createCard({
-        name: name,
-        link: link
-      });
+      const cardElement = createCard(res);
       cards.unshift(res);
       cardList.addItem(cardElement)
     })
