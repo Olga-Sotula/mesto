@@ -54,4 +54,15 @@ export default class Api {
         return this._handleResponse(res, 'Ошибка добавления карточки');
       })
   }
+
+  deleteCard(id) {
+    return fetch(`${this._url}/cards/${id}`, {
+        method: 'DELETE',
+        headers: this._header
+
+      })
+      .then((res) => {
+        return this._handleResponse(res, 'Ошибка удаления карточки');
+      })
+  }
 }

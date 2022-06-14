@@ -7,7 +7,8 @@ export default class PopupWithSubmit extends Popup {
     this._handleSubmit = handleSubmit;
   }
 
-  open(id) {
+  open(element, id) {
+    this._cardElement = element;
     this._cardId = id;
     super.open();
   }
@@ -15,7 +16,7 @@ export default class PopupWithSubmit extends Popup {
   setEventListeners() {
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._handleSubmit(this._cardId);
+      this._handleSubmit(this._cardElement, this._cardId);
     })
     super.setEventListeners();
   }

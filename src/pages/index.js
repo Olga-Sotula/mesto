@@ -125,8 +125,22 @@ function handleCardClick(name, link) {
   popupCardPreview.open(name, link);
 }
 
-function handleCardDelete(id) {
-  popupSubmit.open(id);
+function handleCardDelete(element, id) {
+  popupSubmit.open(element, id);
+}
+
+function deleteCardSubmit(element, id){
+  api.deleteCard(id)
+    .then(() => {
+      element.remove();
+      element = null;
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .finally(() => {
+      popupSubmit.close();
+    });
 }
 
 
@@ -179,7 +193,7 @@ popupProfile.setEventListeners();
 const popupCreateCard = new PopupWithForm(handleCardFormSubmit, popupCreateCardSelector);
 popupCreateCard.setEventListeners();
 
-const popupSubmit = new PopupWithSubmit(handleCardDelete, popupSubmitSelector);
+const popupSubmit = new PopupWithSubmit(deleteCardSubmit, popupSubmitSelector);
 popupSubmit.setEventListeners();
 
 // Включение валидации
