@@ -114,6 +114,7 @@ function renderProfile() {
 }
 
 function handleProfileFormSubmit(formData) {
+  popupProfile.setSavingText();
   const name = formData.fullName,
     description = formData.description;
   api.updateUserProfile({
@@ -131,12 +132,14 @@ function handleProfileFormSubmit(formData) {
       console.log(err)
     })
     .finally(() => {
+      popupProfile.setSubmitText();
       popupProfile.close();
     });
 }
 
 function handleAvatarFormSubmit(formData) {
   const url = formData.avatarUrl;
+  popupAvatar.setSavingText();
   api.updateAvatar(url)
     .then(() => {
       userInfo.setAvatar(url);
@@ -146,6 +149,7 @@ function handleAvatarFormSubmit(formData) {
       console.log(err)
     })
     .finally(() => {
+      popupAvatar.setSubmitText();
       popupAvatar.close();
     });
 }
@@ -164,11 +168,7 @@ function handleCardLike(card) {
     })
     .catch((err) => {
       console.log(err)
-    })
-    .finally((res) => {
-      //
     });
-
 }
 
 function handleCardDelete(element, id) {
@@ -198,6 +198,7 @@ function openPopupCardsWindow() {
 function handleCardFormSubmit(formData) {
   const name = formData.photoName,
     link = formData.photoUrl;
+  popupCreateCard.setSavingText();
   api.addCard({
       name: name,
       link: link
@@ -211,6 +212,7 @@ function handleCardFormSubmit(formData) {
       console.log(err)
     })
     .finally(() => {
+      popupCreateCard.setSavingText();
       popupCreateCard.close();
     });
 }
