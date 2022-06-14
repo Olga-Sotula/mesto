@@ -13,6 +13,6 @@ HTML, CSS, Java Script.
 Реализовать сохранение информации при редактировании профиля и добавлении фотографий.
 
 ## Ссылка на проект github
-https://github.com/Olga-Sotula/mesto/tree/gh-pages
+https://olga-sotula.github.io/mesto/
 
 
