@@ -1,8 +1,9 @@
 export class Card {
-  constructor(data, cardSelector, handleCardClick) {
+  constructor(data, cardSelector, handleCardClick, handleCardDelete) {
+    this._id = data._id;
     this._name = data.name;
     this._link = data.link;
-    this._countLikes = data.likes.length || 0;
+    this._likes = data.likes || [];
     this._ownerId = data.owner._id;
     this._deleteEnabled = false;
     this._cardSelector = cardSelector;
@@ -14,6 +15,7 @@ export class Card {
 
     this._elementRemove = null;
     this._handleCardClick = handleCardClick;
+    this._handleCardDelete = handleCardDelete;
   }
 
   _getTemplate() {
@@ -36,9 +38,16 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._elementLikeButton.addEventListener('click', () => {this._handleLikeToggle()});
-    this._elementRemove.addEventListener('click', () => {this._handlePhotoDelete()});
-    this._elementImage.addEventListener('click', () => {this._handleCardClick(this._name, this._link)});
+    this._elementLikeButton.addEventListener('click', () => {
+      this._handleLikeToggle()
+    });
+    //this._elementRemove.addEventListener('click', () => {this._handlePhotoDelete()});
+    this._elementRemove.addEventListener('click', () => {
+      this._handleCardDelete(this._id)
+    });
+    this._elementImage.addEventListener('click', () => {
+      this._handleCardClick(this._name, this._link)
+    });
   }
 
   generateCard(userId) {
@@ -53,7 +62,7 @@ export class Card {
     this._elementTitle.textContent = this._name;
     this._elementImage.src = this._link;
     this._elementImage.alt = this._name;
-    this._elementLikeCount.textContent = this._countLikes;
+    this._elementLikeCount.textContent = this._likes.length;
     this._elementRemove.hidden = !this._deleteEnabled;
     this._elementRemove.disabled = !this._deleteEnabled;
 

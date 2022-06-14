@@ -10,6 +10,7 @@ import {
   popupProfileNameSelector,
   popupProfileDescriptionSelector,
   popupCreateCardSelector,
+  popupSubmitSelector,
   validatorConfig
 } from '../utils/constants.js';
 
@@ -27,6 +28,7 @@ import {
 } from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithSubmit from "../components/PopupWithSubmit";
 
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
@@ -123,6 +125,10 @@ function handleCardClick(name, link) {
   popupCardPreview.open(name, link);
 }
 
+function handleCardDelete(id) {
+  popupSubmit.open(id);
+}
+
 
 function openPopupCardsWindow() {
   formValidators[popupCreateCard.getFormName()].resetValidation();
@@ -158,24 +164,23 @@ cardAddButton.addEventListener('click', openPopupCardsWindow);
 
 function createCard(data) {
 
-  const card = new Card(data, '#photo-template', handleCardClick);
+  const card = new Card(data, '#photo-template', handleCardClick, handleCardDelete);
   return card.generateCard(userInfo.getUserId());
 }
-
-
-
-
 
 //Попап просмотра карточки
 const popupCardPreview = new PopupWithImage(popupPreviewImageSelector, popupPreviewCaptionSelector, popupCardPreviewSelector);
 popupCardPreview.setEventListeners();
 
-//Попапы форм редактирования профиля и добавления карточки
+//Попапы форм редактирования профиля, добавления карточки и подтверждения удаления
 const popupProfile = new PopupWithForm(handleProfileFormSubmit, popupProfileSelector);
 popupProfile.setEventListeners();
 
 const popupCreateCard = new PopupWithForm(handleCardFormSubmit, popupCreateCardSelector);
 popupCreateCard.setEventListeners();
+
+const popupSubmit = new PopupWithSubmit(handleCardDelete, popupSubmitSelector);
+popupSubmit.setEventListeners();
 
 // Включение валидации
 const formValidators = {};

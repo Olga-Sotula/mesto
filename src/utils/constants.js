@@ -18,6 +18,8 @@ export const popupProfileDescriptionSelector = '.popup__input_type_description';
 
 export const popupCreateCardSelector = '.popup_type_cards';
 
+export const popupSubmitSelector = '.popup_type_submit';
+
 export const validatorConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
