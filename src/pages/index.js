@@ -38,7 +38,7 @@ const profileAvatar = document.querySelector('.profile__avatar');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 
-const api = new Api(apiData.baseUrl, apiData.groupId, apiData.tocken);
+const api = new Api(apiData.baseUrl, apiData.groupId, apiData.header);
 
 //Загрузка стартовых данных с сервера: профиль пользователя, карточки
 const userInfo = new UserInfo(initialUserInfo)

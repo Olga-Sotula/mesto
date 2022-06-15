@@ -1,7 +1,10 @@
 export const apiData = {
   baseUrl: 'https://mesto.nomoreparties.co/v1',
   groupId: 'cohort-43',
-  tocken: '94d6e346-3932-4dc4-bc64-13113fb0f452'
+  header: {
+    'authorization': '94d6e346-3932-4dc4-bc64-13113fb0f452',
+    'Content-Type': 'application/json'
+  }
 }
 
 export const initialUserInfo = {id: "", avatar: "", name: "", description: ""};

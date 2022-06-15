@@ -1,10 +1,7 @@
 export default class Api {
-  constructor(baseUrl, groupId, tocken) {
+  constructor(baseUrl, groupId, header) {
     this._url = `${baseUrl}/${groupId}`;
-    this._header = {
-      'authorization': tocken,
-      'Content-Type': 'application/json'
-    }
+    this._header = header;
   }
 
   _handleResponse(res) {
