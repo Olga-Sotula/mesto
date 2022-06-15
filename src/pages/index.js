@@ -36,18 +36,16 @@ const api = new Api(apiData.baseUrl, apiData.groupId, apiData.header);
 //Загрузка стартовых данных с сервера: профиль пользователя, карточки
 const userInfo = new UserInfo(profileSelectors);
 let cards = [];
-let cardList = null;
+const cardList = new Section((item) => {
+  const cardElement = createCard(item);
+  cardList.setItem(cardElement);
+}, cardListSelector);
 
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([initialUser, initialCards]) => {
-    userInfo.setInfo(initialUser);
-    cardList = new Section((item) => {
-      const cardElement = createCard(item);
-      cardList.setItem(cardElement);
-    }, cardListSelector);
-
     cardList.renderItems(initialCards);
 
+    userInfo.setInfo(initialUser);
     userInfo.renderProfile();
   })
   .catch((err) => {
