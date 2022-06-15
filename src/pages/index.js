@@ -41,21 +41,17 @@ let cardList = null;
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([initialUser, initialCards]) => {
     userInfo.setInfo(initialUser);
-    cards = cards.concat(initialCards);
+    cardList = new Section((item) => {
+      const cardElement = createCard(item);
+      cardList.setItem(cardElement);
+    }, cardListSelector);
+
+    cardList.renderItems(initialCards);
+
+    userInfo.renderProfile();
   })
   .catch((err) => {
     console.log(err)
-  })
-  .finally(() => {
-    userInfo.renderProfile();
-
-    cardList = new Section((item) => {
-        const cardElement = createCard(item);
-        cardList.setItem(cardElement);
-      }
-    , cardListSelector);
-
-    cardList.renderItems(cards);
   });
 
 function openPopupAvatarWindow() {
