@@ -42,8 +42,7 @@ export default class UserInfo {
 
   setInfo(info) {
     this.setId(info._id);
-    this._name = info.name;
-    this._description = info.about;
+    this.setProfile({name: info.name, description: info.about});
     this.setAvatar(info.avatar);
   }
 
