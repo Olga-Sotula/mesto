@@ -53,9 +53,6 @@ Promise.all([api.getUserInfo(), api.getCards()])
   });
 
 function openPopupAvatarWindow() {
-  const values = [];
-  values['avatarUrl'] = userInfo.getAvatar();
-  popupAvatar.setFormValues(values);
   formValidators[popupAvatar.getFormName()].resetValidation();
   popupAvatar.open();
 }
