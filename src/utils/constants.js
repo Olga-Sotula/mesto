@@ -7,8 +7,6 @@ export const apiData = {
   }
 }
 
-export const initialUserInfo = {id: "", avatar: "", name: "", description: ""};
-
 export const cardListSelector = '.photos__grid';
 
 export const popupCardPreviewSelector = '.popup_type_preview';
@@ -33,4 +31,11 @@ export const validatorConfig = {
   inactiveButtonClass: 'popup__submit_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
+};
+
+export const profileSelectors = {
+  title: '.profile__title',
+  subtitle: '.profile__subtitle',
+  avatar: '.profile__avatar',
+  editButton: '.profile__edit-button'
 };

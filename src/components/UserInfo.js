@@ -1,9 +1,13 @@
 export default class UserInfo {
-  constructor(info) {
-    this._id = info.id;
-    this._avatar = info.avatar;
-    this._name = info.name;
-    this._description = info.description;
+  constructor(selectors) {
+    this._titleSelector = selectors.title;
+    this._subtitleSelector = selectors.subtitle;
+    this._avatarSelector = selectors.avatar;
+    this._editButtonSelector = selectors.editButton;
+    this._id = "";
+    this._avatar = "";
+    this._name = "";
+    this._description = "";
   }
 
   setId(id){
