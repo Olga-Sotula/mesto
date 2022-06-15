@@ -68,15 +68,13 @@ Promise.all([api.getUserInfo(), api.getCards()])
   .finally(() => {
     renderProfile();
 
-    cardList = new Section({
-      data: cards,
-      renderer: (item) => {
+    cardList = new Section((item) => {
         const cardElement = createCard(item);
         cardList.setItem(cardElement);
       }
-    }, cardListSelector);
+    , cardListSelector);
 
-    cardList.renderItems();
+    cardList.renderItems(cards);
   });
 
 function openPopupAvatarWindow() {
