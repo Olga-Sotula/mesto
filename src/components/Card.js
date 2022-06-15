@@ -52,7 +52,7 @@ export class Card {
       this._handleCardLike(this)
     });
     this._elementRemove.addEventListener('click', () => {
-      this._handleCardDelete(this._element, this._id)
+      this._handleCardDelete(this)
     });
     this._elementImage.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link)
@@ -83,5 +83,10 @@ export class Card {
   updateLikes(likes, userId) {
     this._likes = likes || [];
     this._renderLikes(userId);
+  }
+
+  deleteElement() {
+    this._element.remove();
+    this._element = null;
   }
 }

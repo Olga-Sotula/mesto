@@ -127,15 +127,14 @@ function handleCardLike(card) {
     });
 }
 
-function handleCardDelete(element, id) {
-  popupSubmit.open(element, id);
+function handleCardDelete(card) {
+  popupSubmit.open(card);
 }
 
-function deleteCardSubmit(element, id) {
-  api.deleteCard(id)
+function deleteCardSubmit(card) {
+  api.deleteCard(card.getId())
     .then(() => {
-      element.remove();
-      element = null;
+      card.deleteElement();
       popupSubmit.close();
     })
     .catch((err) => {
