@@ -84,13 +84,13 @@ function handleProfileFormSubmit(formData) {
         description: formData.description
       });
       userInfo.renderProfile();
+      popupProfile.close();
     })
     .catch((err) => {
       console.log(err)
     })
     .finally(() => {
       popupProfile.setSubmitText();
-      popupProfile.close();
     });
 }
 
@@ -100,13 +100,13 @@ function handleAvatarFormSubmit(formData) {
   api.updateAvatar(url)
     .then(() => {
       userInfo.setAvatar(url);
+      popupAvatar.close();
     })
     .catch((err) => {
       console.log(err)
     })
     .finally(() => {
       popupAvatar.setSubmitText();
-      popupAvatar.close();
     });
 }
 
@@ -136,12 +136,10 @@ function deleteCardSubmit(element, id) {
     .then(() => {
       element.remove();
       element = null;
+      popupSubmit.close();
     })
     .catch((err) => {
       console.log(err)
-    })
-    .finally(() => {
-      popupSubmit.close();
     });
 }
 
@@ -163,13 +161,13 @@ function handleCardFormSubmit(formData) {
       const cardElement = createCard(res);
       cards.unshift(res);
       cardList.addItem(cardElement)
+      popupCreateCard.close();
     })
     .catch((err) => {
       console.log(err)
     })
     .finally(() => {
       popupCreateCard.setSavingText();
-      popupCreateCard.close();
     });
 }
 
