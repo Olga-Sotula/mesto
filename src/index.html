@@ -12,7 +12,10 @@
 
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар"/>
+        <div class="profile__avatar-group">
+          <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар"/>
+          <button type="button" class="profile__avatar-button"></button>
+        </div>
         <div class="profile__info">
           <h1 class="title profile__title"></h1>
           <p class="title profile__subtitle"></p>

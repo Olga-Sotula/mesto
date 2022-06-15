@@ -34,5 +34,6 @@ export const profileSelectors = {
   title: '.profile__title',
   subtitle: '.profile__subtitle',
   avatar: '.profile__avatar',
+  avatarButton: '.profile__avatar-button',
   editButton: '.profile__edit-button'
 };

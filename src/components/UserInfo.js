@@ -1,13 +1,10 @@
 export default class UserInfo {
   constructor(selectors) {
-    this._titleSelector = selectors.title;
-    this._subtitleSelector = selectors.subtitle;
-    this._avatarSelector = selectors.avatar;
-    this._editButtonSelector = selectors.editButton;
-    this._titleElement = document.querySelector(this._titleSelector);
-    this._subtitleElement = document.querySelector(this._subtitleSelector);
-    this._avatarElement = document.querySelector(this._avatarSelector);
-    this._editButtonElement = document.querySelector(this._editButtonSelector);
+    this._titleElement = document.querySelector(selectors.title);
+    this._subtitleElement = document.querySelector(selectors.subtitle);
+    this._avatarElement = document.querySelector(selectors.avatar);
+    this._avatarButtonElement = document.querySelector(selectors.avatarButton);
+    this._editButtonElement = document.querySelector(selectors.editButton);
     this._id = "";
     this._avatar = "";
     this._name = "";
@@ -47,7 +44,7 @@ export default class UserInfo {
   }
 
   setEventListeners(openPopupAvatarWindow, openPopupProfileWindow){
-    this._avatarElement.addEventListener('click', openPopupAvatarWindow);
+    this._avatarButtonElement.addEventListener('click', openPopupAvatarWindow);
     this._editButtonElement.addEventListener('click', openPopupProfileWindow);
   }
 
