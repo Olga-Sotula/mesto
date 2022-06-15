@@ -32,8 +32,6 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithConfirmation from "../components/PopupWithConfirmation";
 
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
 const profileAvatar = document.querySelector('.profile__avatar');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
@@ -66,7 +64,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
     console.log(err)
   })
   .finally(() => {
-    renderProfile();
+    userInfo.renderProfile();
 
     cardList = new Section((item) => {
         const cardElement = createCard(item);
@@ -95,15 +93,6 @@ function openPopupProfileWindow() {
   popupProfile.open();
 }
 
-function renderProfile() {
-  const {
-    name,
-    description
-  } = userInfo.getUserInfo();
-  profileTitle.textContent = name;
-  profileSubtitle.textContent = description;
-}
-
 function handleProfileFormSubmit(formData) {
   popupProfile.setSavingText();
   const name = formData.fullName,
@@ -117,7 +106,7 @@ function handleProfileFormSubmit(formData) {
         name: formData.fullName,
         description: formData.description
       });
-      renderProfile();
+      userInfo.renderProfile();
     })
     .catch((err) => {
       console.log(err)
