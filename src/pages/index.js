@@ -32,8 +32,6 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithConfirmation from "../components/PopupWithConfirmation";
 
-const profileAvatar = document.querySelector('.profile__avatar');
-const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 
 const api = new Api(apiData.baseUrl, apiData.groupId, apiData.header);
@@ -57,7 +55,6 @@ Promise.all([api.getUserInfo(), api.getCards()])
     });
     userInfo.setId(_id);
     userInfo.setAvatar(avatar);
-    profileAvatar.src = userInfo.getAvatar();
     cards = cards.concat(initialCards);
   })
   .catch((err) => {
@@ -123,7 +120,6 @@ function handleAvatarFormSubmit(formData) {
   api.updateAvatar(url)
     .then(() => {
       userInfo.setAvatar(url);
-      profileAvatar.src = userInfo.getAvatar();
     })
     .catch((err) => {
       console.log(err)
@@ -197,8 +193,7 @@ function handleCardFormSubmit(formData) {
     });
 }
 
-profileAvatar.addEventListener('click', openPopupAvatarWindow);
-profileEditButton.addEventListener('click', openPopupProfileWindow);
+userInfo.setEventListeners(openPopupAvatarWindow, openPopupProfileWindow);
 
 cardAddButton.addEventListener('click', openPopupCardsWindow);
 

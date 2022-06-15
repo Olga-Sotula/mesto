@@ -24,6 +24,7 @@ export default class UserInfo {
 
   setAvatar(link) {
     this._avatar = link;
+    this._avatarElement.src = link;
   }
 
   getAvatar() {
@@ -37,6 +38,11 @@ export default class UserInfo {
   setUserInfo(info) {
     this._name = info.name;
     this._description = info.description;
+  }
+
+  setEventListeners(openPopupAvatarWindow, openPopupProfileWindow){
+    this._avatarElement.addEventListener('click', openPopupAvatarWindow);
+    this._editButtonElement.addEventListener('click', openPopupProfileWindow);
   }
 
   renderProfile() {
