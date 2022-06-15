@@ -35,7 +35,7 @@ const api = new Api(apiData.baseUrl, apiData.groupId, apiData.header);
 
 //Загрузка стартовых данных с сервера: профиль пользователя, карточки
 const userInfo = new UserInfo(profileSelectors);
-let cards = [];
+
 const cardList = new Section((item) => {
   const cardElement = createCard(item);
   cardList.setItem(cardElement);
@@ -158,7 +158,6 @@ function handleCardFormSubmit(formData) {
     })
     .then((res) => {
       const cardElement = createCard(res);
-      cards.unshift(res);
       cardList.addItem(cardElement)
       popupCreateCard.close();
     })
