@@ -43,10 +43,10 @@ const cardList = new Section((item) => {
 
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([initialUser, initialCards]) => {
-    cardList.renderItems(initialCards);
-
     userInfo.setInfo(initialUser);
     userInfo.renderProfile();
+
+    cardList.renderItems(initialCards);
   })
   .catch((err) => {
     console.log(err)
@@ -116,11 +116,11 @@ function handleCardClick(name, link) {
 }
 
 function handleCardLike(card) {
-  const likeButton = card.getLikeButton();
-  const method = likeButton.classList.contains('photo__like-button_active') ? 'DELETE' : 'PUT';
+  const userId = userInfo.getId();
+  const method = card.isUserLiked(userId) ? 'DELETE' : 'PUT';
   api.updateLike(card.getId(), method)
     .then((res) => {
-      card.updateLikes(res.likes, userInfo.getId());
+      card.updateLikes(res.likes, userId);
     })
     .catch((err) => {
       console.log(err)

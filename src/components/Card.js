@@ -23,11 +23,7 @@ export class Card {
     return this._id;
   }
 
-  getLikeButton() {
-    return this._elementLikeButton;
-  }
-
-  _getTemplate() {
+   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
       .content
@@ -37,9 +33,13 @@ export class Card {
     return cardElement;
   }
 
+  isUserLiked(userId) {
+    return this._likes.some((item) => userId === item._id);
+  }
+
   _renderLikes(userId) {
     this._elementLikeCount.textContent = this._likes.length;
-    if (this._likes.some((item) => userId === item._id)) {
+    if (this.isUserLiked(userId)) {
       this._elementLikeButton.classList.add('photo__like-button_active');
     } else {
       this._elementLikeButton.classList.remove('photo__like-button_active');
