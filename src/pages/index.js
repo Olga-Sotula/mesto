@@ -80,25 +80,18 @@ Promise.all([api.getUserInfo(), api.getCards()])
   });
 
 function openPopupAvatarWindow() {
-  popupAvatar.setFormValues([{
-    value: userInfo.getAvatar(),
-    selector: popupAvatarUrlSelector
-  }]);
-
+  const values = [];
+  values['avatarUrl'] = userInfo.getAvatar();
+  popupAvatar.setFormValues(values);
   formValidators[popupAvatar.getFormName()].resetValidation();
   popupAvatar.open();
 }
 
 function openPopupProfileWindow() {
-  popupProfile.setFormValues([{
-      value: userInfo.getUserInfo().name,
-      selector: popupProfileNameSelector
-    },
-    {
-      value: userInfo.getUserInfo().description,
-      selector: popupProfileDescriptionSelector
-    }
-  ]);
+  const values = [];
+  values['fullName'] = userInfo.getUserInfo().name;
+  values['description'] = userInfo.getUserInfo().description;
+  popupProfile.setFormValues(values);
 
   formValidators[popupProfile.getFormName()].resetValidation();
   popupProfile.open();
