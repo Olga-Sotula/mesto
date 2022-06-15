@@ -40,18 +40,7 @@ let cardList = null;
 
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([initialUser, initialCards]) => {
-    const {
-      _id,
-      avatar,
-      name,
-      about
-    } = initialUser;
-    userInfo.setUserInfo({
-      name: name,
-      description: about
-    });
-    userInfo.setId(_id);
-    userInfo.setAvatar(avatar);
+    userInfo.setInfo(initialUser);
     cards = cards.concat(initialCards);
   })
   .catch((err) => {
@@ -96,7 +85,7 @@ function handleProfileFormSubmit(formData) {
       about: description
     })
     .then(() => {
-      userInfo.setUserInfo({
+      userInfo.setProfile({
         name: formData.fullName,
         description: formData.description
       });

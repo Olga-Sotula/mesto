@@ -35,9 +35,16 @@ export default class UserInfo {
     return {name: this._name, description: this._description};
   }
 
-  setUserInfo(info) {
+  setProfile(data) {
+    this._name = data.name;
+    this._description = data.description;
+  }
+
+  setInfo(info) {
+    this.setId(info._id);
     this._name = info.name;
-    this._description = info.description;
+    this._description = info.about;
+    this.setAvatar(info.avatar);
   }
 
   setEventListeners(openPopupAvatarWindow, openPopupProfileWindow){
