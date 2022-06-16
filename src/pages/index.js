@@ -28,7 +28,8 @@ import {
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithConfirmation from "../components/PopupWithConfirmation";
-
+const profileAvatarButton = document.querySelector('.profile__avatar-button');
+const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 
 const api = new Api(apiData.baseUrl, apiData.groupId, apiData.header);
@@ -44,7 +45,6 @@ const cardList = new Section((item) => {
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([initialUser, initialCards]) => {
     userInfo.setInfo(initialUser);
-    userInfo.renderProfile();
 
     cardList.renderItems(initialCards);
   })
@@ -80,7 +80,6 @@ function handleProfileFormSubmit(formData) {
         name: formData.fullName,
         description: formData.description
       });
-      userInfo.renderProfile();
       popupProfile.close();
     })
     .catch((err) => {
@@ -166,7 +165,8 @@ function handleCardFormSubmit(formData) {
     });
 }
 
-userInfo.setEventListeners(openPopupAvatarWindow, openPopupProfileWindow);
+profileAvatarButton.addEventListener('click', openPopupAvatarWindow);
+profileEditButton.addEventListener('click', openPopupProfileWindow);
 
 cardAddButton.addEventListener('click', openPopupCardsWindow);
 
