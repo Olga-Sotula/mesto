@@ -59,8 +59,9 @@ function openPopupAvatarWindow() {
 
 function openPopupProfileWindow() {
   const values = [];
-  values['fullName'] = userInfo.getUserInfo().name;
-  values['description'] = userInfo.getUserInfo().description;
+  const {name, description} = userInfo.getUserInfo();
+  values['fullName'] = name;
+  values['description'] = description;
   popupProfile.setFormValues(values);
 
   formValidators[popupProfile.getFormName()].resetValidation();
